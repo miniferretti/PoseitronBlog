@@ -17,8 +17,9 @@ from app import app
 
 @app.route('/index')
 def index():
-    user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
-        'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
+    user = {'username' : 'Nicolas'}
+    #user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
+    #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
     #return render_template('index.html', title='Home')
     #return "Hello, World! :)" test chap 1
     return '''
@@ -27,7 +28,7 @@ def index():
         <title>Page d'acceuil - PoseitronBlog</title>
     </head>
     <body>
-        <h1>Hello to, ''' + user[0] + ''', ''' + user[1] + '''!</h1>
+        <h1>Hello to, ''' + user['username'] + '''!</h1>
     </body>
 </html>''' 
  
