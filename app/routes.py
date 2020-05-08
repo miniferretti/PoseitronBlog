@@ -1,6 +1,6 @@
 
 from app import app
-#from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for
 #from app.forms import LoginForm
 
 
@@ -21,6 +21,6 @@ def index():
     users = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
         'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
     #return render_template('index2.html', title='Home', users=users)
-    return render_template('index.html')
+    return render_template('index2.html')
 
  
