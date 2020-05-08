@@ -1,6 +1,6 @@
 
 from app import app
-#from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for
 #from app.forms import LoginForm
 
 
@@ -20,15 +20,6 @@ def index():
     user = {'username' : 'Nicolas'}
     #user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
     #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
-    #return render_template('index.html', title='Home')
-    #return "Hello, World! :)" test chap 1
-    return '''
-<html>
-    <head>
-        <title>Page d'acceuil - PoseitronBlog</title>
-    </head>
-    <body>
-        <h1>Hello to, ''' + user['username'] + '''!</h1>
-    </body>
-</html>''' 
+    return render_template('index.html', title='Home', user=user)
+
  
