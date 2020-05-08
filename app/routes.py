@@ -20,7 +20,7 @@ def index():
     #user = {'username' : 'Nicolas'}
     users = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
         'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
-    return render_template('index2.html', title='Home', users=users)
-    #return render_template('index2.html')
+    #return render_template('index2.html', title='Home', users=users)
+    return render_template('index.html')
 
  
