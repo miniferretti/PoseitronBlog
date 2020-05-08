@@ -7,8 +7,11 @@
         {% endif %}
     </head>
     <body>
-        {% if user %}
-        <h1>Hello, {{ user.username }}!</h1>
+        {% if users %}
+        <h1>Hello to, </h1>
+        {% for user in users}
+        <b>{{ user.username }}</b>
+        {% endfor %}
         {% else %}
         <h1>Hello to unknown user</h1>
         {% endif %}

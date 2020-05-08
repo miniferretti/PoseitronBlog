@@ -17,10 +17,10 @@ from flask import render_template, flash, redirect, url_for
 
 @app.route('/index')
 def index():
-    user = {'username' : 'Nicolas'}
-    #user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
-    #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
-    #return render_template('index2.html', title='Home', user=user)
-    return render_template('index2.html')
+    #user = {'username' : 'Nicolas'}
+    users = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
+        'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
+    return render_template('index2.html', title='Home', users=users)
+    #return render_template('index2.html')
 
  
