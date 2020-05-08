@@ -23,6 +23,7 @@ def login():
             next_page = url_for('index')
         return redirect(url_for(next_page))
     return render_template('login.html', title='Sign In', form=form) 
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -35,7 +36,7 @@ def index():
     #users = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
     #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
     #return render_template('index2.html', title='Home', users=users)
-    return render_template('index.html', title='Page d\'acceuil')
+    return render_template('index.html', title='Home page')
     #return render_template('base.html')
 
  
