@@ -8,10 +8,10 @@
     </head>
     <body>
         {% if users %}
-        <h1>Hello to, </h1>
-        {% for user in users}
-        <b>{{ user.username }}</b>
-        {% endfor %}
+            <h1>Hello to, </h1>
+            {% for user in users %}
+                <p><b>{{ user.username }}</b></p>
+            {% endfor %}
         {% else %}
         <h1>Hello to unknown user</h1>
         {% endif %}
