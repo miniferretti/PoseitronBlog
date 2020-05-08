@@ -19,5 +19,15 @@ from app import app
 def index():
     user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
         'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
-    return render_template('index.html', title='Home')
-    #return "Hello, World! :)"
+    #return render_template('index.html', title='Home')
+    #return "Hello, World! :)" test chap 1
+    return '''
+<html>
+    <head>
+        <title>Page d'acceuil - PoseitronBlog</title>
+    </head>
+    <body>
+        <h1>Hello to, ''' + user[0] + ''', ''' + user[1] + '''!</h1>
+    </body>
+</html>''' 
+ 
