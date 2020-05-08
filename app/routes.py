@@ -17,7 +17,7 @@ from app import app
 
 @app.route('/index')
 def index():
-    #user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
-    #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
-    #return render_template('index.html', title='Home')
-    return "Hello, World! :)"
+    user = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
+        'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
+    return render_template('index.html', title='Home')
+    #return "Hello, World! :)"
