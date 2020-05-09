@@ -144,7 +144,7 @@ def explore():
 
 @app.route('/robotPresentation')
 @login_required
-def explore():
+def robotPresentation():
     page = request.args.get('page', 2, type=int)
     next_url = url_for('robotPresentation')
     return render_template("robotPresentation.html", title='Robot\' presentation')
