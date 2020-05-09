@@ -152,6 +152,6 @@ def robotPresentation():
 @app.route('/putainDeGraphes')
 @login_required
 def putainDeGraphes():
-    page = request.args.get('page', 2, type=int)
+    page = request.args.get('page', 3, type=int)
     next_url = url_for('Putain de graphes')
     return render_template("putainDeGraphes.html", title='Robot data')
