@@ -42,7 +42,7 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-    
+
 @app.route('/index')
 @login_required
 def index():
@@ -53,4 +53,12 @@ def index():
     return render_template('index.html', title='Home page')
     #return render_template('base.html')
 
- 
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html', user=user, posts=posts)
