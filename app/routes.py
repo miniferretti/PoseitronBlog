@@ -153,5 +153,5 @@ def robotPresentation():
 @login_required
 def putainDeGraphes():
     page = request.args.get('page', 3, type=int)
-    next_url = url_for('Putain de graphes')
+    next_url = url_for('putainDeGraphes')
     return render_template("putainDeGraphes.html", title='Robot data')
