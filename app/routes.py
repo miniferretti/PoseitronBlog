@@ -141,3 +141,10 @@ def explore():
         if posts.has_prev else None
     return render_template("index.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
+
+@app.route('/robotPresentation')
+@login_required
+def explore():
+    page = request.args.get('page', 2, type=int)
+    next_url = url_for('robotPresentation')
+    return render_template("robotPresentation.html", title='Robot\' presentation')
