@@ -45,6 +45,12 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+
 @app.route('/index')
 @login_required
 def index():
@@ -52,6 +58,7 @@ def index():
     #users = [{'username': 'Nicolas'}, {'username': 'Donatien'}, {
     #    'username': 'Éléonore'}, {'username': 'Aurèle'}, {'username': 'Matteo'}]
     #return render_template('index2.html', title='Home', users=users)
+    '''
     posts = [
         {
             'author': {'username': 'John'},
@@ -66,6 +73,7 @@ def index():
             'body': 'Merde ça marche!'
         }
     ]
+    '''
     return render_template('index.html', title='Home page')
     #return render_template('base.html')
 
@@ -79,8 +87,3 @@ def user(username):
     ]
     return render_template('user.html', user=user, posts=posts)
 
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
