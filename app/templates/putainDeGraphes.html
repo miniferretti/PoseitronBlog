@@ -4,44 +4,33 @@
         <hr>
         Ceci vient de putainDeGraphes
         <hr>
-        <script src="https://code.highcharts.com/highcharts.js">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
         <div id="container" style="width:100%; height:400px;"></div>
-        document.addEventListener('DOMContentLoaded', function () {
-            var myChart = Highcharts.chart('container', {
-                chart: {
-                    type: 'bar'
-                },
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+        var myChart = Highcharts.chart('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
                 title: {
-                    text: 'Fruit Consumption'
-                },
-                xAxis: {
-                    categories: ['Apples', 'Bananas', 'Oranges']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Fruit eaten'
-                    }
-                },
-                series: [{
-                    name: 'Jane',
-                    data: [1, 0, 4]
-                }, {
-                    name: 'John',
-                    data: [5, 7, 3]
-                }]
-            });
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
         });
-        var chart1; // globally available
-            document.addEventListener('DOMContentLoaded', function() {
-                chart1 = Highcharts.stockChart('container', {
-                    rangeSelector: {
-                        selected: 1
-                    },
-                    series: [{
-                        name: 'USD to EUR',
-                        data: usdtoeur // predefined JavaScript array
-                    }]
-                });  
-            });
+    });
         </script>
 {% endblock %}
