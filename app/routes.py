@@ -72,7 +72,7 @@ def index():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
+        {'author': user, 'body': 'Merde ça marche!'},
+        {'author': user, 'body': 'Et ici aussi!'}
     ]
     return render_template('user.html', user=user, posts=posts)
