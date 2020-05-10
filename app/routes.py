@@ -154,7 +154,8 @@ def robotPresentation():
 def putainDeGraphes():
     page = request.args.get('page', 3, type=int)
     next_url = url_for('putainDeGraphes')
-    data = [{'x': 2}, {'y': 3}]
-    return render_template("putainDeGraphes.html", title='Robot data', data = data)
+    x = [1, 2, 3]
+    y = [1, 2, 3]
+    return render_template("putainDeGraphes.html", title='Robot data', x=x, y=y)
 
 #print('Fin routes')
