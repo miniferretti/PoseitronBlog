@@ -7,7 +7,7 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
-print('Debut Init py')
+#print('Debut Init py')
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
@@ -43,4 +43,4 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('PoseitronBlog startup')
-print('Fin Init py')
+#print('Fin Init py')
