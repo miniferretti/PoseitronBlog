@@ -5,6 +5,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
+import matplotlib.pyplot as plt
+import io
+import base64
 
 #print('Debut routes')
 @app.route('/', methods=['GET', 'POST'])
@@ -154,8 +157,16 @@ def robotPresentation():
 def putainDeGraphes():
     page = request.args.get('page', 3, type=int)
     next_url = url_for('putainDeGraphes')
-    x = [1, 2, 3]
-    y = [1, 2, 3]
-    return render_template("putainDeGraphes.html", title='Robot data', xcoord=x, ycoord=y)
+    img = io.BytesIO()
+    y = [1,2,3,4,5]
+    x = [0,2,1,3,4]
+    plt.plot(x,y)
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+    plot_url = base64.b64encode(img.getvalue()).decode()
+
+    return '<img src="data:image/png;base64,{}">'.format(plot_url)
+    #return render_template("putainDeGraphes.html", title='Robot data', xcoord=x, ycoord=y)
 
 #print('Fin routes')
