@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
 
-print('Debut model')
+#print('Debut model')
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -65,4 +65,4 @@ class Post(db.Model):
     
     def __repr__(self):
         return '<Post {}>'.format(self.body)
-print('Fin model')
+#print('Fin model')

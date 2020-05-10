@@ -2,11 +2,12 @@
 
 {% block content %}
         <hr>
-        Ceci vient de putainDeGraphes
+        Ceci vient de putainDeGraphes. Voici ce qu'il y a dans data : x = {{data.x}}, y = {{data.y}} 
         <hr>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <div id="container" style="width:100%; height:400px;"></div>
         <script>
+            print()
             Highcharts.chart('container', {
             chart: {
                 type: 'spline',
@@ -80,17 +81,21 @@
                 name: 'Random data',
                 data: (function () {
                     // generate an array of random data
-                    var data = [],
+                    var data2 = data,
                         time = (new Date()).getTime(),
                         i;
-                    
+                    for(i=0;i<=19;i++){
+                        data2.push(data2.x+i, data2.y+i)
+                    }
+                    /*
                     for (i = -19; i <= 0; i += 1) {
-                        data.push({
+                        data2.push(
                             x: time + i * 1000,
                             y: Math.random()
+                            
                         });
-                    }
-                    return data;
+                    }*/
+                    return data2;
                 }())
             }]
         });
