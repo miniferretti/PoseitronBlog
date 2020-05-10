@@ -156,13 +156,13 @@ def robotPresentation():
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
 #a modifier pour recuperer les donnees du robot
-@app.route('/robotData', methods = ['GET'])
-@login_required
+@app.route('/_robotData', methods = ['GET'])
+#@login_required
 def robotData():
     return jsonify(result=random.randint(0,10))
 
 @app.route('/putainDeGraphes')
-@login_required
+#@login_required
 def putainDeGraphes():
     #page = request.args.get('page', 3, type=int)
     #next_url = url_for('putainDeGraphes')
