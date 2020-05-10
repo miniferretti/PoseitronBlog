@@ -6,7 +6,7 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
-
+print('Debut routes')
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
@@ -155,3 +155,5 @@ def putainDeGraphes():
     page = request.args.get('page', 3, type=int)
     next_url = url_for('putainDeGraphes')
     return render_template("putainDeGraphes.html", title='Robot data')
+
+print('Fin routes')
