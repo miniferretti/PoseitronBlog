@@ -2,7 +2,7 @@
 
 {% block content %}
         <hr>
-        Ceci vient de putainDeGraphes. Voici ce qu'il y a dans data : x = {{x[0]}}, y = {{y[0]}} 
+        Ceci vient de putainDeGraphes. Voici ce qu'il y a dans data : x = {{xcoord[0]}}, y = {{ycoord[0]}} 
         <hr>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <div id="container" style="width:100%; height:400px;"></div>
@@ -80,12 +80,14 @@
                 name: 'Random data',
                 data: (function () {
                     // generate an array of random data
-                    var xcoord = x,
-                    var ycoord = y,
+                    var data = [],
                         time = (new Date()).getTime(),
                         i;
-                    for(i=0;i<=19;i++){
-                        data2.push(xcoord, ycoord)
+                    for(i=0;i<=3;i++){
+                        data.push({
+                            x: xcoord[i], 
+                            y: ycoord[i]
+                        })
                     }
                     /*
                     for (i = -19; i <= 0; i += 1) {
@@ -95,7 +97,7 @@
                             
                         });
                     }*/
-                    return data2;
+                    return data;
                 }())
             }]
         });

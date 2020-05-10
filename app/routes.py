@@ -156,6 +156,6 @@ def putainDeGraphes():
     next_url = url_for('putainDeGraphes')
     x = [1, 2, 3]
     y = [1, 2, 3]
-    return render_template("putainDeGraphes.html", title='Robot data', x=x, y=y)
+    return render_template("putainDeGraphes.html", title='Robot data', xcoord=x, ycoord=y)
 
 #print('Fin routes')
