@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
@@ -8,6 +8,9 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import io
 import base64
+import webbrowser
+import time 
+import random
 
 #print('Debut routes')
 @app.route('/', methods=['GET', 'POST'])
@@ -152,21 +155,28 @@ def robotPresentation():
     next_url = url_for('robotPresentation')
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
+#a modifier pour recuperer les donnees du robot
+@app.route('/robotData', methods = ['GET'])
+def robotData():
+    return jsonify(result=random.randint(0,10))
+
 @app.route('/putainDeGraphes')
 @login_required
 def putainDeGraphes():
     page = request.args.get('page', 3, type=int)
     next_url = url_for('putainDeGraphes')
+    '''
     img = io.BytesIO()
     y = [1,2,3,4,5]
     x = [0,2,1,3,4]
     plt.plot(x,y)
     plt.savefig(img, format='png')
     img.seek(0)
-
-    plot_url = base64.b64encode(img.getvalue()).decode()
+    '''
+    #plot_url = base64.b64encode(img.getvalue()).decode()
 
     #return '<img src="data:image/png;base64,{}">'.format(plot_url)
-    return render_template("putainDeGraphes.html", title='Robot data', plot_url = plot_url)
+    #return render_template("putainDeGraphes.html", title='Robot data', plot_url = plot_url)
+    return render_template("putainDeGraphes.html", title='Robot data')
 
 #print('Fin routes')
