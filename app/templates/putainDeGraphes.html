@@ -8,7 +8,7 @@
     <body onload ="update_values();">
         <h1>Dynamic Update</h1>
         <p>
-            <span id="resul">?</span>san</span>
+            <span id="resul">?</span>
             <script>
                 document.getElementById("result").innerHTML;
             </script>
@@ -33,7 +33,7 @@
                         c=c+1;
                         console.log(c);
                         console.log(temp);
-                        myCHart.data.labels.push(c);
+                        myChart.data.labels.push(c);
                         myChart.data.datasets.forEach((dataset)=> {dataset.data.push(temp);
                         });
                         myChart.update();

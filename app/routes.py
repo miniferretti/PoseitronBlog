@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import Flask, render_template, flash, redirect, url_for, request, jsonify
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
@@ -157,14 +157,15 @@ def robotPresentation():
 
 #a modifier pour recuperer les donnees du robot
 @app.route('/robotData', methods = ['GET'])
+@login_required
 def robotData():
     return jsonify(result=random.randint(0,10))
 
 @app.route('/putainDeGraphes')
 @login_required
 def putainDeGraphes():
-    page = request.args.get('page', 3, type=int)
-    next_url = url_for('putainDeGraphes')
+    #page = request.args.get('page', 3, type=int)
+    #next_url = url_for('putainDeGraphes')
     '''
     img = io.BytesIO()
     y = [1,2,3,4,5]
