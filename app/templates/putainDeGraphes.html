@@ -4,10 +4,11 @@
         <hr>
         Ceci vient de putainDeGraphes. Voici ce qu'il y a dans data : x = {{xcoord[0]}}, y = {{ycoord[0]}} 
         <hr>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <div id="container" style="width:100%; height:400px;"></div>
-        <script>
-            Highcharts.chart('container', {
+        '<img src="data:image/png;base64,{}">'.format({{ plot_url }})
+        <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
+        <!--<div id="container" style="width:100%; height:400px;"></div>-->
+        <!--<script>
+         /*   Highcharts.chart('container', {
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
@@ -93,6 +94,6 @@
                     return data;
                 }())
             }]
-        });       
-        </script>
+        });  */     
+        </script>-->
 {% endblock %}

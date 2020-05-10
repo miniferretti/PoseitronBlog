@@ -166,7 +166,7 @@ def putainDeGraphes():
 
     plot_url = base64.b64encode(img.getvalue()).decode()
 
-    return '<img src="data:image/png;base64,{}">'.format(plot_url)
-    #return render_template("putainDeGraphes.html", title='Robot data', xcoord=x, ycoord=y)
+    #return '<img src="data:image/png;base64,{}">'.format(plot_url)
+    return render_template("putainDeGraphes.html", title='Robot data', plot_url = plot_url)
 
 #print('Fin routes')
