@@ -5,9 +5,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-import matplotlib.pyplot as plt
-import io
-import base64
+#import matplotlib.pyplot as plt
+#import io
+#import base64
 import webbrowser
 import time 
 import random
