@@ -24,26 +24,30 @@
                         function(data){
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
-                            
+                            x_coord = data.resultx;
+                            y_coord = data.resulty;
                             //document.write("x vaut :"+ x_coord);
                             
                             //document.write("y vaut :"+ y_coord);
                             console.log(data)
                         });
-                        x_coord=x_coord + data.resultx;
+                        
                         //c=c+1;
-                        y_coord=y_coord + data.resulty;
+                        
                         //console.log(c);
-                        //console.log(x_coord);
-                        //console.log(y_coord);
+                        console.log(x_coord);
+                        console.log(y_coord);
                         //myChart.data.labels.push(c);
-                        /*
+                        
+                        chart.data.datasets.forEach((dataset) => {
+                        dataset.data.pop();
+                        });
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push(x_coord);
                             dataset.data.push(y_coord);
                         });
                         
-                        myChart.update();*/
+                        myChart.update();
                     };
 
                     var ctx = document.getElementById('myChart');
