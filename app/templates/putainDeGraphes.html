@@ -5,12 +5,8 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <body onload ="update_values();">
         <h1>Dynamic Update</h1>
+        <p id=result>?</p>
         <p>
-            <span id="resul">?</span>
-            <script>
-                document.getElementById("result").innerHTML;
-            </script>
-            <button onclick="stopTextColor();">Stop</button>
             <div>
                 <canvas id="myChart" width=".02em" height=".02em"></canvas>
                 <canvas id="myChart2" width=".02em" height=".02em"></canvas>
@@ -67,6 +63,6 @@
                     });
             </script>
         </p>
-        <p id=result> pas de result</p>
+
         </body>
 {% endblock %}
