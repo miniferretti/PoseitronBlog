@@ -17,36 +17,35 @@
                 //var c=0;
                 var x_coord;
                 var y_coord;
-                var truc;
+
                     function update_values(){
                         $.getJSON('/_robotData',
                         function(data){
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
                             x_coord=data.resultx;
-                            truc =2;
                             //document.write("x vaut :"+ x_coord);
                             y_coord=data.resulty;
                             //document.write("y vaut :"+ y_coord);
-                            //console.log(data)
+                            console.log(data)
                         });
-                        /*
-                        c=c+1;
                         
-                        console.log(c);
+                        //c=c+1;
+                        
+                        //console.log(c);
                         console.log(x_coord);
                         console.log(y_coord);
-                        myChart.data.labels.push(c);
+                        //myChart.data.labels.push(c);
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push(x_coord);
                             dataset.data.push(y_coord);
                         });
                         
-                        myChart.update();*/
+                        myChart.update();
                     };
                     var ctx = document.getElementById('myChart');
                     //var truc = 2;
-                    var machin = 3;
+                    //var machin = 3;
                     //document.write("x vaut :"+ x_coord);
                     //document.write("y vaut :"+ y_coord);
                     var myChart = new Chart(ctx, {
@@ -56,8 +55,8 @@
                             datasets: [{
                                 label: 'Robot speed',
                                 data: [{
-                                    x: truc,
-                                    y: machin
+                                    x: x_coord,
+                                    y: y_coord
                                 }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
