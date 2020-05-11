@@ -15,7 +15,7 @@
 
             <script type="text/javascript">
                 var intervalID = setInterval(update_values,1000);
-                var c=0;
+                //var c=0;
                 var x_coord;
                 var y_coord;
                     function update_values(){
@@ -27,7 +27,7 @@
                             y_coord=data.resulty;
                             console.log(data)
                         });
-                        
+                        /*
                         c=c+1;
                         
                         console.log(c);
@@ -39,7 +39,7 @@
                             dataset.data.push(y_coord);
                         });
                         
-                        myChart.update();
+                        myChart.update();*/
                     };
                     var ctx = document.getElementById('myChart');
                     var myChart = new Chart(ctx, {
@@ -49,8 +49,8 @@
                             datasets: [{
                                 label: 'Robot speed',
                                 data: [{
-                                    x: 1,
-                                    y: 1
+                                    x: x_coord,
+                                    y: y_coord
                                 }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
