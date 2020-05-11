@@ -26,9 +26,9 @@
                             //document.write("x vaut :"+ x_coord);
                             y_coord=data.resulty;
                             //document.write("y vaut :"+ y_coord);
-                            console.log(data)
+                            //console.log(data)
                         });
-                        
+                        /*
                         c=c+1;
                         
                         console.log(c);
@@ -40,13 +40,13 @@
                             dataset.data.push(y_coord);
                         });
                         
-                        myChart.update();
+                        myChart.update();*/
                     };
                     var ctx = document.getElementById('myChart');
                     var myChart = new Chart(ctx, {
                         type: 'scatter',
                         data: {
-                            labels: [c],
+                            //labels: [c],
                             datasets: [{
                                 label: 'Robot speed',
                                 data: [{
