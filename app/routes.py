@@ -158,7 +158,7 @@ def robotPresentation():
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
 #a modifier pour recuperer les donnees du robot
-@app.route('/robotData', methods =['POST'])
+@app.route('/robotData', methods =['GET'])
 @login_required
 def robotData():
     return jsonify(result=random.randint(0, 10))
