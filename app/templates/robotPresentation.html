@@ -3,7 +3,46 @@
 {% block content %}
 
         <hr>
-         Ceci vient de presentation
+
+        <p>
+                PoseiTron is a coastgard-helper robot. 
+        </p>
+        <p>
+                Its main tasks are to get the buoys back on the delimitation mark of the port's channels, 
+                redress the windsocks and light the lighthouse at night. At the end of the day, PoseiTron rises its flags and 
+                goes back to its rest area inside the port. 
+        </p>   
+        <p>
+                All of these actions refer to the 2020 edition of the rules for Eurobot competition. 
+        </p>
+        <p>
+                Poseidon being the master of the seas and protector of the sailmen at the same time, it seemed a good 
+                idea to name our robot from him... because it's never nifty to get Poseidon angry. 
+        </p>
+        <p>
+                PoseiTron is a differential drive robot with two free wheels for centered rotating point. 
+                These two driving wheels are powered by a 24V-motor each. Paired with encoders, odometers, buck-boost 
+                and on-board computer, it allows to drive the robot arround.  Full system is relaying on a strong odometry, 
+                path planning and PI control loop all runing in the onboard computer and communicating through CAN bus with the 
+                electronic chip that directly controls the wheels. 
+        </p>
+        <p>
+                In order to pick up the buoys, figurated by cups, PoseiTron is equiped with two sets of three pliers on each of its
+                front and back sides. Each of these pliers embed a colour sensor to sort out the buoys and place them on the right 
+                side of the port channel. The pliers are actuated using pneumatic cylinders while the racks are driven up and down 
+                using Dynamixel motors. 
+        </p>
+        <p>
+                Next two actions, caring for the windsocks to stay upright and ligthing up the lighthouse rely on the same system 
+                which simply consists of a pneumatic piston and then uses the displacement of the full robot to carry the action. 
+                Flags raising also uses pneumatic cylinders. 
+        </p>
+        <p>
+                In order to avoid opponent's coastgard boats and more generally all kind of obastacles, PoseiTron uses ultrasonic 
+                sensors, fixed all over its two sides. This ensures redundancy in the signals and cover most of the important angles 
+                of vue for the robot. 
+        </p>
+                        
         <hr>
 
 {% endblock %}
