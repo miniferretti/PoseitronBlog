@@ -43,8 +43,10 @@
                         myChart.update();*/
                     };
                     var ctx = document.getElementById('myChart');
-                    document.write("x vaut :"+ x_coord);
-                    document.write("y vaut :"+ y_coord);
+                    var truc = 2;
+                    var machin = 3;
+                    //document.write("x vaut :"+ x_coord);
+                    //document.write("y vaut :"+ y_coord);
                     var myChart = new Chart(ctx, {
                         type: 'scatter',
                         data: {
@@ -52,8 +54,8 @@
                             datasets: [{
                                 label: 'Robot speed',
                                 data: [{
-                                    x: x_coord,
-                                    y: y_coord
+                                    x: truc,
+                                    y: machin
                                 }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
