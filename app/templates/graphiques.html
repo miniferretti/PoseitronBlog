@@ -5,41 +5,70 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <body onload ="update_values();">
         <h1>Dynamic Update</h1>
-        <p id=result>?</p>
-        <p>
+        <p id=resultx>?</p> 
+        <p id=resulty>?</p>
             <div>
                 <canvas id="myChart" width=".02em" height=".02em"></canvas>
                 <canvas id="myChart2" width=".02em" height=".02em"></canvas>
             </div>
 
             <script type="text/javascript">
-                var intervalID = setInterval(update_values,1000);
+                var intervalID = setInterval(update_values,2000);
                 var c=0;
-                var temp;
+                let xcoord ;
+                let ycoord;
+
                     function update_values(){
+
                         $.getJSON('/_robotData',
                         function(data){
-                            $('#result').text(data.result);
-                            temp=data.result;
-                            console.log(data)
+                            $('#resultx').text(data.resultx);
+                            $('#resulty').text(data.resulty);
+                            xcoord = data.resultx;
+                            ycoord = data.resulty;
+                            //document.write("x vaut :"+ x_coord);
+                            
+                            //document.write("y vaut :"+ y_coord);
+                            //console.log(data)
+                            //console.log(xcoord);
+                            //console.log(ycoord);
                         });
-                        c=c+1;
-                        console.log(c);
-                        console.log(temp);
+                        
+                        c=c+2;
+                        
+                        // la partie qui est censé transmettre les coordonnees a la chart
+
+                        //console.log(c);
+                        console.log(xcoord);
+                        console.log(ycoord);
                         myChart.data.labels.push(c);
+                        /*
+                        myChart.data.datasets.forEach((dataset) => {
+                        dataset.data.pop();
+                        });*/
+                        
                         myChart.data.datasets.forEach((dataset )=> {
-                            dataset.data.push(temp);
+                            dataset.data.push(xcoord);
+                            dataset.data.push(ycoord);
                         });
+                        //myChart.data.datasets.push(xcoord);
+                        //console.log(data);
                         myChart.update();
                     };
+
+                    //console.log(xcoord);
+                    //console.log(ycoord);
                     var ctx = document.getElementById('myChart');
                     var myChart = new Chart(ctx, {
                         type: 'scatter',
                         data: {
                             labels: [c],
                             datasets: [{
-                                label: '# of people visiting market',
-                                data: [temp],
+                                label: 'Robot speed',
+                                data: [{
+                                    x: xcoord,
+                                    y: ycoord
+                                }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
 
@@ -53,16 +82,27 @@
                         },
                         options: {
                             scales: {
+                                xAxes: [{
+                                    type: 'linear',
+                                    position: 'bottom',
+                                    ticks: {
+                                        max: 10,
+                                        min: 0,
+                                        stepSize: 1
+                                    }
+                                }],
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
+                                        //beginAtZero: true,
+                                        max: 10,
+                                        min: 0,
+                                        stepSize: 1
                                     }
                                 }]
                             }
                         }
                     });
             </script>
-        </p>
 
         </body>
 {% endblock %}
