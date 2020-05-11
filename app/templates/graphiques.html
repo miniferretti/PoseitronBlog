@@ -39,7 +39,7 @@
                             dataset.data.push(y_coord);
                         });
                         
-                        //myChart.update();
+                        myChart.update();
                     };
                     var ctx = document.getElementById('myChart');
                     var myChart = new Chart(ctx, {
@@ -68,6 +68,11 @@
                                 xAxes: [{
                                     type: 'linear',
                                     position: 'bottom'
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
                                 }]
                             }
                         }
