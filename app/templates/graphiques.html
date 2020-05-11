@@ -65,11 +65,13 @@
                         options: {
                             scales: {
                                 xAxes: [{
-                                    //type: 'linear',
-                                    //position: 'bottom',
-                                    max: 10,
-                                    min: 0,
-                                    stepSize: 1
+                                    type: 'linear',
+                                    position: 'bottom',
+                                    ticks: {
+                                        max: 10,
+                                        min: 0,
+                                        stepSize: 1
+                                    }
                                 }],
                                 yAxes: [{
                                     ticks: {
