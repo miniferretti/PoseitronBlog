@@ -153,7 +153,7 @@ def explore():
 @app.route('/robotPresentation')
 @login_required
 def robotPresentation():
-    page = request.args.get('page', 2, type=int)
+    page = request.args.get('page', 1, type=int)
     next_url = url_for('robotPresentation')
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
@@ -166,20 +166,8 @@ def robotData():
 @app.route('/putainDeGraphes')
 @login_required
 def putainDeGraphes():
-    page = request.args.get('page', 3, type=int)
+    page = request.args.get('page', 1, type=int)
     next_url = url_for('putainDeGraphes')
-    '''
-    img = io.BytesIO()
-    y = [1,2,3,4,5]
-    x = [0,2,1,3,4]
-    plt.plot(x,y)
-    plt.savefig(img, format='png')
-    img.seek(0)
-    '''
-    #plot_url = base64.b64encode(img.getvalue()).decode()
-
-    #return '<img src="data:image/png;base64,{}">'.format(plot_url)
-    #return render_template("putainDeGraphes.html", title='Robot data', plot_url = plot_url)
     return render_template("putainDeGraphes.html", title='Robot data')
 
 #print('Fin routes')
