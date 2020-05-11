@@ -21,7 +21,7 @@
                 var c=0;
                 var temp;
                     function update_values(){
-                        $.getJSON($SCRIPT_ROOT + '/_robotData',
+                        $.getJSON($SCRIPT_ROOT + '/robotData',
                         function(data){
                             $('#result').text(data.result);
                             temp=data.result;
@@ -66,5 +66,4 @@
                         }
                     });
             </script>
-    </body>
 {% endblock %}
