@@ -163,11 +163,9 @@ def robotPresentation():
 def robotData():
     return jsonify(result=random.randint(0, 10))
 
-@app.route('/putainDeGraphes')
+@app.route('/graphiques')
 @login_required
-def putainDeGraphes():
-    #page = request.args.get('page', 1, type=int)
-    #next_url = url_for('putainDeGraphes')
-    return render_template("putainDeGraphes.html", title='Robot data')
+def graphiques():
+    return render_template("graphiques.html", title='Robot data')
 
 #print('Fin routes')
