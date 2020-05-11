@@ -23,8 +23,6 @@
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
                             x_coord=data.resultx;
-                            print(x_coord);
-                            print(y_coord);
                             y_coord=data.resulty;
                             console.log(data)
                         });
@@ -50,8 +48,8 @@
                             datasets: [{
                                 label: 'Robot speed',
                                 data: [{
-                                    x: x_coord,
-                                    y: y_coord
+                                    x: x_coord-x_coord,
+                                    y: y_coord-y_coord
                                 }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
