@@ -164,8 +164,8 @@ def robotData():
 @app.route('/putainDeGraphes')
 @login_required
 def putainDeGraphes():
-    #page = request.args.get('page', 3, type=int)
-    #next_url = url_for('putainDeGraphes')
+    page = request.args.get('page', 3, type=int)
+    next_url = url_for('putainDeGraphes')
     '''
     img = io.BytesIO()
     y = [1,2,3,4,5]
