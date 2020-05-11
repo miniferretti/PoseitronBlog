@@ -46,9 +46,11 @@
                         myChart.data.datasets.forEach((dataset) => {
                         dataset.data.pop();
                         });*/
+                        /* //plutot utiliser ceci pour un nombre precis de points
                         if(dataset.data.length > max){
                             dataset.data.shift();
-                        }
+                        }*/
+
                         myChart.data.labels.pop();
                         myChart.data.datasets.forEach((dataset) => {
                             dataset.data.pop();
