@@ -161,7 +161,7 @@ def robotPresentation():
 @app.route('/_robotData', methods =['GET'])
 @login_required
 def robotData():
-    return jsonify(resultx=random.randint(0, 1), resulty=random.randint(0, 1))
+    return jsonify(resultx=random.randint(-1, 1), resulty=random.randint(-1, 1))
 
 @app.route('/graphiques')
 @login_required
