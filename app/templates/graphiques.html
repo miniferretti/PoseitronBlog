@@ -46,6 +46,9 @@
                         myChart.data.datasets.forEach((dataset) => {
                         dataset.data.pop();
                         });*/
+                        if(dataset.data.length > max){
+                            dataset.data.shift();
+                        }
                         myChart.data.labels.pop();
                         myChart.data.datasets.forEach((dataset) => {
                             dataset.data.pop();
