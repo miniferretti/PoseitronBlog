@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <body onload ="update_values();">
         <h1>Dynamic Update</h1>
-            <span id="{{ resul.id }} "></span>
+            <span id="resul.id"></span>
             <script>
                 document.getElementById("result").innerHTML;
             </script>
@@ -16,7 +17,7 @@
             </div>
 
             <script type="text/javascript">
-                var intervalID=setInterval(update_values,1000);
+                var intervalID = setInterval(update_values,1000);
                 var c=0;
                 var temp;
                     function update_values(){
@@ -30,7 +31,8 @@
                         console.log(c);
                         console.log(temp);
                         myChart.data.labels.push(c);
-                        myChart.data.datasets.forEach((dataset)=> {dataset.data.push(temp);
+                        myChart.data.datasets.forEach((dataset )=> {
+                            dataset.data.push(temp);
                         });
                         myChart.update();
                     };
@@ -64,7 +66,6 @@
                         }
                     });
             </script>
-        </p>
     </body>
         <!--<img src="data:image/png;base64,{}">.format({{ plot_url }})-->
         <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
