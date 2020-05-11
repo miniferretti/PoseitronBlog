@@ -6,7 +6,7 @@
     <body onload ="update_values();">
         <h1>Dynamic Update</h1>
         <p>
-            <span id=resul>?</span>
+            <span id="resul">?</span>
             <script>
                 document.getElementById("result").innerHTML;
             </script>
@@ -22,7 +22,7 @@
                 var c=0;
                 var temp;
                     function update_values(){
-                        $.getJSON($SCRIPT_ROOT + '/robotData',
+                        $.getJSON('/_robotData',
                         function(data){
                             $('#result').text(data.result);
                             temp=data.result;
