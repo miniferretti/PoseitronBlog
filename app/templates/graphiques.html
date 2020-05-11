@@ -40,15 +40,15 @@
                         console.log(xcoord);
                         console.log(ycoord);
                         //myChart.data.labels.push(c);
-                        
+                        /*
                         myChart.data.datasets.forEach((dataset) => {
                         dataset.data.pop();
-                        });
+                        });*/
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push(xcoord);
                             dataset.data.push(ycoord);
                         });
-                        console.log(data);
+                        //console.log(data);
                         myChart.update();
                     };
 
