@@ -11,6 +11,8 @@ from datetime import datetime
 import webbrowser
 import time 
 import random
+import json
+#import requests
 
 #print('Debut routes')
 @app.route('/', methods=['GET', 'POST'])
@@ -156,7 +158,7 @@ def robotPresentation():
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
 #a modifier pour recuperer les donnees du robot
-@app.route('/_robotData', methods = ['GET'])
+@app.route('/_robotData', methods = ['POST'])
 @login_required
 def robotData():
     return jsonify(result=random.randint(0,10))
