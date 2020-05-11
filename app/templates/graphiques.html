@@ -48,8 +48,9 @@
                         });*/
                         
                         myChart.data.datasets.forEach((dataset )=> {
-                            dataset.data.push(xcoord);
-                            dataset.data.push(ycoord);
+                            dataset.data.push({x: xcoord, y: ycoord});
+                            //dataset.data.push(xcoord);
+                            //dataset.data.push(ycoord);
                         });
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
