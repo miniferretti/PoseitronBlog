@@ -14,7 +14,7 @@
 
             <script type="text/javascript">
                 var intervalID = setInterval(update_values,2000);
-                //var c=0;
+                var c=0;
                 let xcoord ;
                 let ycoord;
 
@@ -34,7 +34,7 @@
                             //console.log(ycoord);
                         });
                         
-                        //c=c+1;
+                        c=c+1;
                         
                         // la partie qui est censé transmettre les coordonnees a la chart
 
@@ -46,10 +46,12 @@
                         myChart.data.datasets.forEach((dataset) => {
                         dataset.data.pop();
                         });*/
+                        
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push(xcoord);
                             dataset.data.push(ycoord);
                         });
+                        //myChart.data.datasets.push(xcoord);
                         //console.log(data);
                         myChart.update();
                     };
