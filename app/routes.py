@@ -204,6 +204,13 @@ Y = 0
 @app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
+    global Vr1
+    global VrRef1
+    global Vl1
+    global VlRef1
+    global Time1
+    global X
+    global Y
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
