@@ -2,258 +2,262 @@
 
 {% block content %}
 <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <body onload ="update_values();">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
-        <h1>Real time monitoring</h1>
-        <!--<p id=resultx>?</p> 
+<body onload="update_values();">
+
+    <h1>Real time monitoring</h1>
+    <!--<p id=resultx>?</p> 
         <p id=resulty>?</p>-->
-            <!--<button onclick="stopTextColor();">Stop</button>-->
-            <div>
-                <canvas id="myChart" width=".01em" height=".01em"></canvas>
-                <canvas id="myChart2" width=".02em" height=".02em"></canvas>
-            </div>
+    <!--<button onclick="stopTextColor();">Stop</button>-->
+    <div>
+        <canvas id="myChart" width=".01em" height=".01em"></canvas>
+        <canvas id="myChart2" width=".02em" height=".02em"></canvas>
+    </div>
 
-            <script type="text/javascript">
-                var intervalID = setInterval(update_values,500);
-                //var c=0;
-                let xcoord ;
-                let ycoord;
-                let timeSpeed = 0;
-                let speedLeft;
-                let speedRight;
-                let consignLeft;
-                let consignRight;
-                //let tab;
-                    function update_values(){
+    <script type="text/javascript">
+        var intervalID = setInterval(update_values, 500);
+        //var c=0;
+        let xcoord;
+        let ycoord;
+        let timeSpeed = 0;
+        let speedLeft;
+        let speedRight;
+        let consignLeft;
+        let consignRight;
+        //let tab;
+        function update_values() {
 
-                        $.getJSON('/_robotData',
-                        function(data){
-                            $('#resultx').text(data.resultx);
-                            $('#resulty').text(data.resulty);
-                            //$('#timeSpeed').text(data.timeSpeed);
-                            $('#speedLeft').text(data.speedLeft);
-                            $('#speedRight').text(data.speedRight);
-                            xcoord = data.resultx;
-                            ycoord = data.resulty;
-                            //timeSpeed = data.timeSpeed;
-                            speedLeft = data.speedLeft;
-                            speedRight = data.speedRight;
-                            consignLeft = data.consignLeft;
-                            consignRight = data.consignRight;
-                            //console.log(xcoord);
-                            //console.log(ycoord);
-                            //console.log(timeSpeed);
-                            //console.log(speedLeft);
-                            //console.log(speedRight);
-                            //console.log(consignLeft);
-                            //console.log(consignRight);
-                            //console.log(data)
+            $.getJSON('/_robotData',
+                function (data) {
+                    $('#resultx').text(data.resultx);
+                    $('#resulty').text(data.resulty);
+                    //$('#timeSpeed').text(data.timeSpeed);
+                    $('#speedLeft').text(data.speedLeft);
+                    $('#speedRight').text(data.speedRight);
+                    xcoord = data.resultx;
+                    ycoord = data.resulty;
+                    //timeSpeed = data.timeSpeed;
+                    speedLeft = data.speedLeft;
+                    speedRight = data.speedRight;
+                    consignLeft = data.consignLeft;
+                    consignRight = data.consignRight;
+                    //console.log(xcoord);
+                    //console.log(ycoord);
+                    //console.log(timeSpeed);
+                    //console.log(speedLeft);
+                    //console.log(speedRight);
+                    //console.log(consignLeft);
+                    //console.log(consignRight);
+                    //console.log(data)
 
-                        });
-                        
-                       // c=c+2;
-                       timeSpeed = timeSpeed + 0.5;
-                       //tab = [speedLeft, speedRight, consignLeft, consignRight];
-                        // la partie qui est censée transmettre les coordonnees a la chart
+                });
 
-                        //console.log(c);
-                        //console.log(xcoord);
-                        //console.log(ycoord);
-                        //myChart.data.labels.push(c);
-                        /*
-                        myChart.data.datasets.forEach((dataset) => {
-                        dataset.data.pop();
-                        });*/
+            // c=c+2;
+            timeSpeed = timeSpeed + 0.5;
+            //tab = [speedLeft, speedRight, consignLeft, consignRight];
+            // la partie qui est censée transmettre les coordonnees a la chart
 
-                        /* //plutot utiliser ceci pour un nombre precis de points
-                        if(dataset.data.length > max){
-                            dataset.data.shift();
-                        }*/
+            //console.log(c);
+            //console.log(xcoord);
+            //console.log(ycoord);
+            //myChart.data.labels.push(c);
+            /*
+            myChart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+            });*/
 
-                        
-                        myChart.data.datasets.forEach((dataset) => {
-                            dataset.data.pop();
-                        });
-                        myChart.data.datasets.forEach((dataset )=> {
-                            dataset.data.push({x: xcoord, y: ycoord});
-                        });
+            /* //plutot utiliser ceci pour un nombre precis de points
+            if(dataset.data.length > max){
+                dataset.data.shift();
+            }*/
 
-                        console.log(speedLeft);
-                        myChart2.data.labels.push(timeSpeed);
-                        myChart2.data.datasets.forEach((dataset)=> {
-                            myChart2.data.datasets[0].data.push(speedLeft);
-                            myChart2.data.datasets[1].data.push(speedRight);
-                            myChart2.data.datasets[2].data.push(consignLeft);
-                            myChart2.data.datasets[3].data.push(consignRight);
-                            //dataset.data.push(tab);
-                            //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
-                            /*
-                            dataset.data.push(speedLeft);
-                            dataset.data.push(speedRight);
-                            dataset.data.push(consignLeft);
-                            dataset.data.push(consignRight);*/
-                            
-                        });
-                        /*
-                        if(myChart2.data.datasets.length> 10){
-                            myChart2.data.dataset.data.shift();
-                            myChart2.data.labels.shift();
-                            }*/
-                        if(myChart2.data.labels.length > 10){
-                        myChart2.data.labels.shift();
+
+            myChart.data.datasets.forEach((dataset) => {
+                dataset.data.pop();
+            });
+            myChart.data.datasets.forEach((dataset) => {
+                dataset.data.push({ x: xcoord, y: ycoord });
+            });
+
+            console.log(speedLeft);
+            myChart2.data.labels.push(timeSpeed);
+            myChart2.data.datasets.forEach((dataset) => {
+                myChart2.data.datasets[0].data.push(speedLeft);
+                myChart2.data.datasets[1].data.push(speedRight);
+                myChart2.data.datasets[2].data.push(consignLeft);
+                myChart2.data.datasets[3].data.push(consignRight);
+                //dataset.data.push(tab);
+                //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
+                /*
+                dataset.data.push(speedLeft);
+                dataset.data.push(speedRight);
+                dataset.data.push(consignLeft);
+                dataset.data.push(consignRight);*/
+
+            });
+            /*
+            if(myChart2.data.datasets.length> 10){
+                myChart2.data.dataset.data.shift();
+                myChart2.data.labels.shift();
+                }*/
+            if (myChart2.data.labels.length > 10) {
+                myChart2.data.labels.shift();
+            }
+            myChart2.data.datasets.forEach((dataset) => {
+                if (dataset.data.length > 10) {
+                    dataset.data.shift();
+                }
+            });
+            //console.log(myChart.data.datasets);
+            //console.log(myChart2.data.datasets);
+
+
+            //myChart.data.datasets.push(xcoord);
+            //console.log(data);
+            myChart.update();
+            myChart2.update();
+        };
+
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                //labels: [c],
+                datasets: [{
+                    label: 'Robot position',
+                    data: [{
+                        x: xcoord,
+                        y: ycoord
+                    }],
+                    backgroundColor: [
+                        'rgba(102, 255, 153, 1)',
+
+                    ],
+                    borderColor: [
+                        'rga(255, 0, 0, 1)',
+
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
+                        ticks: {
+                            max: 10,
+                            min: 0,
+                            stepSize: 1
                         }
-                        myChart2.data.datasets.forEach((dataset )=> {
-                            if(dataset.data.length > 10){
-                                dataset.data.shift();
-                            }
-                        });
-                        //console.log(myChart.data.datasets);
-                        //console.log(myChart2.data.datasets);
-                        
-
-                        //myChart.data.datasets.push(xcoord);
-                        //console.log(data);
-                        myChart.update();
-                        myChart2.update();
-                    };
-
-                    var ctx = document.getElementById('myChart');
-                    var myChart = new Chart(ctx, {
-                        type: 'scatter',
-                        data: {
-                            //labels: [c],
-                            datasets: [{
-                                label: 'Robot position',
-                                data: [{
-                                    x: xcoord,
-                                    y: ycoord
-                                }],
-                                backgroundColor: [
-                                    'rgba(102, 255, 153, 1)',
-
-                                ],
-                                borderColor: [
-                                    'rga(255, 0, 0, 1)',
-
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'linear',
-                                    position: 'bottom',
-                                    ticks: {
-                                        max: 10,
-                                        min: 0,
-                                        stepSize: 1
-                                    }
-                                }],
-                                yAxes: [{
-                                    ticks: {
-                                        //beginAtZero: true,
-                                        max: 10,
-                                        min: 0,
-                                        stepSize: 1
-                                    }
-                                }]
-                            }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            //beginAtZero: true,
+                            max: 10,
+                            min: 0,
+                            stepSize: 1
                         }
-                    });
-                    var graph2 = document.getElementById('myChart2');
-                    var myChart2 = new Chart(graph2, {
-                        type: 'line',
-                        data: {
-                            labels: [timeSpeed],
-                            datasets: [{
-                                label: 'Speed left wheel',
-                                fill: false,
-                                data: [speedLeft],
-                                backgroundColor:"rgba(225,0,0,0.4)",
-                                borderColor: "red",
-                                borderCapStyle: 'square',
-                                pointBorderColor: "black",
-                                pointBackgroundColor: "red",
-                                pointBorderWidth: 1,
-                                pointHoverRadius: 8,
-                                pointRadius: 2,
-                                pointHitRadius: 10,
-                                borderWidth: 1
-                            },{label: 'Speed right wheel',
-                                fill: false,
-                                data: [speedRight],
-                                backgroundColor: [
-                                    'rgba(0,255,0, 1)',
+                    }]
+                }
+            }
+        });
+        var graph2 = document.getElementById('myChart2');
+        var myChart2 = new Chart(graph2, {
+            type: 'line',
+            data: {
+                labels: [timeSpeed],
+                datasets: [{
+                    label: 'Speed left wheel',
+                    fill: false,
+                    data: [speedLeft],
+                    backgroundColor: "rgba(225,0,0,0.4)",
+                    borderColor: "red",
+                    borderCapStyle: 'square',
+                    pointBorderColor: "black",
+                    pointBackgroundColor: "red",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 8,
+                    pointRadius: 2,
+                    pointHitRadius: 10,
+                    borderWidth: 1
+                }, {
+                    label: 'Speed right wheel',
+                    fill: false,
+                    data: [speedRight],
+                    backgroundColor: [
+                        'rgba(0,255,0, 1)',
 
-                                ],
-                                borderColor: "green",
-                                borderCapStyle: 'square',
-                                pointBorderColor: "black",
-                                pointBackgroundColor: "green",
-                                pointBorderWidth: 1,
-                                pointHoverRadius: 8,
-                                pointRadius: 2,
-                                pointHitRadius: 10,
-                                borderWidth: 1
+                    ],
+                    borderColor: "green",
+                    borderCapStyle: 'square',
+                    pointBorderColor: "black",
+                    pointBackgroundColor: "green",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 8,
+                    pointRadius: 2,
+                    pointHitRadius: 10,
+                    borderWidth: 1
 
-                            },{label: 'Left wheel ref',
-                                fill: false,
-                                data: [consignLeft],
-                                backgroundColor: "blue",
-                                borderColor: "blue",
-                                borderCapStyle: 'square',
-                                pointBorderColor: "black",
-                                pointBackgroundColor: "blue",
-                                pointBorderWidth: 1,
-                                pointHoverRadius: 3,
-                                pointRadius: 1,
-                                pointHitRadius: 3,
-                                borderWidth: 1
+                }, {
+                    label: 'Left wheel ref',
+                    fill: false,
+                    data: [consignLeft],
+                    backgroundColor: "blue",
+                    borderColor: "blue",
+                    borderCapStyle: 'square',
+                    pointBorderColor: "black",
+                    pointBackgroundColor: "blue",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 3,
+                    pointRadius: 1,
+                    pointHitRadius: 3,
+                    borderWidth: 1
 
-                            },
-                            {label: 'Right wheel ref',
-                                fill: false,
-                                data: [consignRight],
-                                backgroundColor: "black",
-                                borderColor: "black",
-                                borderCapStyle: 'square',
-                                pointBorderColor: "black",
-                                pointBackgroundColor: "black",
-                                pointBorderWidth: 1,
-                                pointHoverRadius: 3,
-                                pointRadius: 1,
-                                pointHitRadius: 3,
-                                borderWidth: 1
+                },
+                {
+                    label: 'Right wheel ref',
+                    fill: false,
+                    data: [consignRight],
+                    backgroundColor: "black",
+                    borderColor: "black",
+                    borderCapStyle: 'square',
+                    pointBorderColor: "black",
+                    pointBackgroundColor: "black",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 3,
+                    pointRadius: 1,
+                    pointHitRadius: 3,
+                    borderWidth: 1
 
-                            }
-                            ]
-                        },
-                        options: {
-                            scales: {
-                                /*
-                                xAxes: [{
-                                    type: 'linear',
-                                    position: 'bottom',
+                }
+                ]
+            },
+            options: {
+                scales: {
+                    /*
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
 
-                                    ticks: {
-                                        max: 10,
-                                        min: 0,
-                                        stepSize: 1
-                                    }
-                                }],*/
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true,
-                                        max: 10,
-                                        min: 0,
-                                        stepSize: 1
-                                    }
-                                }]
-                            }
+                        ticks: {
+                            max: 10,
+                            min: 0,
+                            stepSize: 1
                         }
-                    });
-            </script>
-        </body>
+                    }],*/
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 10,
+                            min: 0,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
 {% endblock %}
