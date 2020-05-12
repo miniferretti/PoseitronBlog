@@ -8,6 +8,7 @@
         <h1>Real time monitoring</h1>
         <!--<p id=resultx>?</p> 
         <p id=resulty>?</p>-->
+            <button onclick="stopTextColor();">Stop</button>
             <div>
                 <canvas id="myChart" width=".01em" height=".01em"></canvas>
                 <canvas id="myChart2" width=".02em" height=".02em"></canvas>
@@ -83,8 +84,8 @@
                             
                         });
                         if(myChart2.data.datasets.length> 10){
-                            myChart2.data.dataset.data.shift();
-                            myChart2.data.labels.shift();
+                            myChart2.data.dataset.data.pop();
+                            myChart2.data.labels.pop();
                             }
                         //console.log(myChart.data.datasets);
                         //console.log(myChart2.data.datasets);
