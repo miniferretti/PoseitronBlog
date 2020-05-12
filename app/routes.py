@@ -212,7 +212,7 @@ def robotData():
     consignLeft = 2
     consignRight = 2
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
-                   consignLeft=VlRef, consignRight=VrRef)
+                   consignLeft=VlRef, consignRight=VrRef, time=Time)
 
 
 @app.route('/graphiques')
