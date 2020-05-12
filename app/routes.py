@@ -5,9 +5,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-#import matplotlib.pyplot as plt
-#import io
-#import base64
+# import matplotlib.pyplot as plt
+# import io
+# import base64
 import webbrowser
 import time
 import random
@@ -16,7 +16,7 @@ from struct import unpack
 from struct import pack
 import socket
 import select
-#import requests
+# import requests
 
 ID_type = 1  # Type
 UDP_IP = "192.168.1.111"  # IP address of the robot
@@ -25,9 +25,9 @@ UDP_PORT = 5005  # Network Port
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setblocking(0)
 
-#timeSpeed = 0
+# timeSpeed = 0
 
-#print('Debut routes')
+# print('Debut routes')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -185,6 +185,15 @@ def robotPresentation():
 # a modifier pour recuperer les donnees du robot
 
 
+Vr = 0
+VrRef = 0
+Vl = 0
+VlRef = 0
+Time = 0
+X = 0
+Y = 0
+
+
 @app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
@@ -200,21 +209,28 @@ def robotData():
     if ready[0]:
         msg = sock.recv(56)
         data = unpack('<7d', msg)
+        global Vr
         Vr = data[0]
+        global VrRef
         VrRef = data[1]
+        global Vl
         Vl = data[2]
+        global VlRef
         VlRef = data[3]
+        global Time
         Time = data[4]
+        global X
         X = data[5]
+        global Y
         Y = data[6]
-    #global timeSpeed
-    #timeSpeed = timeSpeed + 500
-    resultx = random.randint(0, 10)
+    # global timeSpeed
+    # timeSpeed = timeSpeed + 500
+  '''  resultx = random.randint(0, 10)
     resulty = random.randint(0, 10)
     speedLeft = random.randint(0, 10)
     speedRight = random.randint(0, 10)
     consignLeft = 2
-    consignRight = 2
+    consignRight = 2 ''''
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
@@ -224,4 +240,4 @@ def robotData():
 def graphiques():
     return render_template("graphiques.html", title='Robot data')
 
-#print('Fin routes')
+# print('Fin routes')
