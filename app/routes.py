@@ -23,7 +23,7 @@ UDP_IP = "192.168.1.111"  # IP address of the robot
 UDP_PORT = 5005  # Network Port
 # Binding of the socket to the UDP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.setblocking(0)
+sock.setblocking(1)
 
 # timeSpeed = 0
 
@@ -213,17 +213,17 @@ def robotData():
             int(ID_type)]
     msg = pack('ffffffffffiffffi', *data)
     sock.sendto(msg, (UDP_IP, UDP_PORT))
-    ready = select.select([sock], [], [], 1)
-    if ready[0]:
-        msg2 = sock.recv(56)
-        data1 = unpack('<7d', msg2)
-        Vr = int(data1[0])
-        VrRef = int(data1[1])
-        Vl = int(data1[2])
-        VlRef = int(data1[3])
-        Time = int(data1[4])
-        X = int(data1[5])
-        Y = int(data1[6])
+    #ready = select.select([sock], [], [], 1)
+   # if ready[0]:
+    msg2 = sock.recv(56)
+    data1 = unpack('<7d', msg2)
+    Vr = int(data1[0])
+    VrRef = int(data1[1])
+    Vl = int(data1[2])
+    VlRef = int(data1[3])
+    Time = int(data1[4])
+    X = int(data1[5])
+    Y = int(data1[6])
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     # X = random.randint(0, 100)
