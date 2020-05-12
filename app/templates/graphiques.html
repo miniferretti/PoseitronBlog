@@ -4,7 +4,8 @@
 <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <body onload ="update_values();">
-        <h1>Dynamic Update</h1>
+
+        <h1>Real time monitoring</h1>
         <p id=resultx>?</p> 
         <p id=resulty>?</p>
             <div>
@@ -73,7 +74,7 @@
                         data: {
                             labels: [c],
                             datasets: [{
-                                label: 'Robot speed',
+                                label: 'Robot position',
                                 data: [{
                                     x: xcoord,
                                     y: ycoord
