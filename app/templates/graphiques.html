@@ -24,6 +24,7 @@
                 let speedRight;
                 let consignLeft;
                 let consignRight;
+                //let 
                     function update_values(){
 
                         $.getJSON('/_robotData',
@@ -80,10 +81,11 @@
                         console.log(speedLeft);
                         myChart2.data.labels.push(timeSpeed);
                         myChart2.data.datasets.forEach((dataset)=> {
-                            dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
-                            //dataset.data.push(speedRight);
-                            //dataset.data.push(consignLeft);
-                            //dataset.data.push(consignRight);
+                            //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
+                            dataset.data.push(speedLeft);
+                            dataset.data.push(speedRight);
+                            dataset.data.push(consignLeft);
+                            dataset.data.push(consignRight);
                             
                         });
                         /*
