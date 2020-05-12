@@ -25,14 +25,18 @@
                         function(data){
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
+                            $('#timeSpeed').text(data.timeSpeed);
+                            $('#speedLeft').text(data.speedleft);
+                            $('#speedright').text(data.speedright);
                             xcoord = data.resultx;
                             ycoord = data.resulty;
-                            //document.write("x vaut :"+ x_coord);
-                            
-                            //document.write("y vaut :"+ y_coord);
-                            //console.log(data)
                             //console.log(xcoord);
                             //console.log(ycoord);
+                            console.log(timeSpeed);
+                            console.log(speedleft);
+                            console.log(speedright);
+                            //console.log(data)
+
                         });
                         
                        // c=c+2;
@@ -40,8 +44,8 @@
                         // la partie qui est censée transmettre les coordonnees a la chart
 
                         //console.log(c);
-                        console.log(xcoord);
-                        console.log(ycoord);
+                        //console.log(xcoord);
+                        //console.log(ycoord);
                         //myChart.data.labels.push(c);
                         /*
                         myChart.data.datasets.forEach((dataset) => {
@@ -112,6 +116,5 @@
                         }
                     });
             </script>
-
         </body>
 {% endblock %}
