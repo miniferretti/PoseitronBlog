@@ -165,7 +165,7 @@
                                 fill: false,
                                 data: [speedRight],
                                 backgroundColor: [
-                                    'rgba(102, 255, 153, 1)',
+                                    'rgba(0,255,0, 1)',
 
                                 ],
                                 borderColor: "green",
@@ -178,7 +178,37 @@
                                 pointHitRadius: 10,
                                 borderWidth: 1
 
-                            }]
+                            },{label: 'Left wheel ref',
+                                fill: false,
+                                data: [consignLeft],
+                                backgroundColor: "blue",
+                                borderColor: "blue",
+                                borderCapStyle: 'square',
+                                pointBorderColor: "black",
+                                pointBackgroundColor: "blue",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 3,
+                                pointRadius: 1,
+                                pointHitRadius: 3,
+                                borderWidth: 1
+
+                            },
+                            {label: 'Right wheel ref',
+                                fill: false,
+                                data: [consignRight],
+                                backgroundColor: "black",
+                                borderColor: "black",
+                                borderCapStyle: 'square',
+                                pointBorderColor: "black",
+                                pointBackgroundColor: "black",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 3,
+                                pointRadius: 1,
+                                pointHitRadius: 3,
+                                borderWidth: 1
+
+                            }
+                            ]
                         },
                         options: {
                             scales: {
