@@ -231,8 +231,8 @@ def robotData():
     # Vr = random.randint(0, 100)
     # VrRef = 50
     # VlRef = 50
-    return jsonify(resultx=X, resulty=Y, speedLeft=json.dumps(Vl), speedRight=json.dumps(Vr),
-                   consignLeft=json.dumps(VlRef), consignRight=json.dumps(VrRef)  # , time=Time)
+    return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
+                   consignLeft=VlRef, consignRight=VrRef, time=Time)
 
 
 @app.route('/graphiques')
