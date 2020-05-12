@@ -215,8 +215,8 @@ def robotData():
     sock.sendto(msg, (UDP_IP, UDP_PORT))
     ready = select.select([sock], [], [], 0.05)
     if ready[0]:
-        msg = sock.recv(56)
-        data1 = unpack('<7d', msg)
+        msg2 = sock.recv(56)
+        data1 = unpack('<7d', msg2)
         Vr = data1[0]
         VrRef = data1[1]
         Vl = data1[2]
