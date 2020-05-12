@@ -185,11 +185,18 @@ def robotPresentation():
 # a modifier pour recuperer les donnees du robot
 
 
-Vr = 0
-VrRef = 0
-Vl = 0
-VlRef = 0
-Time = 0
+class L(list):
+    def append(self, item):
+        list.append(self, item)
+        if len(self) > 100:
+            del self[0]
+
+
+Vr = L()
+VrRef = L()
+Vl = L()
+VlRef = L()
+Time = L()
 X = 0
 Y = 0
 
@@ -197,13 +204,6 @@ Y = 0
 @app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
-    Vr = 0
-    VrRef = 0
-    Vl = 0
-    VlRef = 0
-    Time = 0
-    X = 0
-    Y = 0
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
@@ -216,11 +216,11 @@ def robotData():
     if ready[0]:
         msg2 = sock.recv(56)
         data1 = unpack('<7d', msg2)
-        Vr = (data1[0])
-        VrRef = (data1[1])
-        Vl = (data1[2])
-        VlRef = (data1[3])
-        Time = (data1[4])
+        Vr.append(data1[0])
+        VrRef.append(data1[1])
+        Vl.append(data1[2])
+        VlRef.append(data1[3])
+        Time.append(data1[4])
         X = (data1[5])
         Y = (data1[6])
     # global timeSpeed
@@ -231,8 +231,8 @@ def robotData():
     # Vr = random.randint(0, 100)
     # VrRef = 50
     # VlRef = 50
-    return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
-                   consignLeft=VlRef, consignRight=VrRef)  # , time=Time)
+    return jsonify(resultx=X, resulty=Y, speedLeft=json.dumps(Vl), speedRight=json.dumps(Vr),
+                   consignLeft=json.dumps(VlRef), consignRight=json.dumps(VrRef)  # , time=Time)
 
 
 @app.route('/graphiques')
