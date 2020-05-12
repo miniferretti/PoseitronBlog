@@ -39,7 +39,7 @@
                 });
 
             myChart.data.datasets.forEach((dataset) => {
-               // dataset.data.pop();
+                dataset.data.pop();
             });
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.push({ x: xcoord, y: ycoord });
@@ -94,16 +94,16 @@
                         type: 'linear',
                         position: 'bottom',
                         ticks: {
-                            max: 10,
-                            min: -10,
-                            stepSize: 1
+                            max: 2,
+                            min: -2,
+                            stepSize: 0.1
                         }
                     }],
                     yAxes: [{
                         ticks: {
-                            max: 10,
-                            min: -10,
-                            stepSize: 1
+                            max: 2,
+                            min: -2,
+                            stepSize: 0.1
                         }
                     }]
                 }
