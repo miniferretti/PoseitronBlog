@@ -25,7 +25,7 @@
         let speedRight;
         let consignLeft;
         let consignRight;
-        let time;
+        //let time;
         //let tab;
         function update_values() {
 
@@ -36,7 +36,7 @@
                     //$('#timeSpeed').text(data.timeSpeed);
                     $('#Vl').text(data.speedLeft);
                     $('#Vr').text(data.speedRight);
-                    $('#time').text(data.time);
+                    //$('#time').text(data.time);
                     $('#VlRef').text(data.consignLeft);
                     $('#VrRef').text(data.consignRight);
                     xcoord = data.resultx;
@@ -46,7 +46,7 @@
                     speedRight = data.speedRight;
                     consignLeft = data.consignLeft;
                     consignRight = data.consignRight;
-                    time = data.time;
+                    //time = data.time;
                     //console.log(xcoord);
                     //console.log(ycoord);
                     //console.log(timeSpeed);
@@ -92,7 +92,7 @@
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
             });*/
-            myChart2.data.labels.push(time);
+            myChart2.data.labels.push(timeSpeed);
             myChart2.data.datasets.forEach((dataset) => {
                 myChart2.data.datasets[0].data.push(speedLeft);
                 myChart2.data.datasets[1].data.push(speedRight);
