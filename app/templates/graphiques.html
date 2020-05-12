@@ -92,12 +92,13 @@
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
             });*/
+            myChart2.clear();
             myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
-                myChart2.data.datasets[0].data.push({ x: time, y: speedLeft});
-                myChart2.data.datasets[1].data.push({x: time, y: speedRight});
-                myChart2.data.datasets[2].data.push({x: time, y: consignLeft});
-                myChart2.data.datasets[3].data.push({x: time, y: consignRight});
+                myChart2.data.datasets[0].data.push(speedLeft);
+                myChart2.data.datasets[1].data.push(speedRight);
+                myChart2.data.datasets[2].data.push(consignLeft);
+                myChart2.data.datasets[3].data.push(consignRight);
                 //dataset.data.push(tab);
                 //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
                 /*
@@ -105,14 +106,13 @@
                 dataset.data.push(speedRight);
                 dataset.data.push(consignLeft);
                 dataset.data.push(consignRight);*/
-
             });
             /*
             if(myChart2.data.datasets.length> 10){
                 myChart2.data.dataset.data.shift();
                 myChart2.data.labels.shift();
                 }*/
-                
+             /*   
             if (myChart2.data.labels.length > 50) {
                 myChart2.data.labels.shift();
                 myChart2.data.datasets.forEach((dataset) => {
@@ -120,10 +120,9 @@
                     dataset.data.shift();
                 }
             });
-            }
+            }*/
             //console.log(myChart.data.datasets);
             //console.log(myChart2.data.datasets);
-
 
             //myChart.data.datasets.push(xcoord);
             //console.log(data);
@@ -177,16 +176,13 @@
         });
         var graph2 = document.getElementById('myChart2');
         var myChart2 = new Chart(graph2, {
-            type: 'scatter',
+            type: 'line',
             data: {
                 labels: [time],
                 datasets: [{
                     label: 'Speed left wheel',
                     fill: false,
-                    data: [{
-                        x: time, 
-                        y: speedLeft
-                        }],
+                    data: [speedLeft],
                     backgroundColor: "rgba(225,0,0,0.4)",
                     borderColor: "red",
                     borderCapStyle: 'square',
@@ -200,10 +196,7 @@
                 }, {
                     label: 'Speed right wheel',
                     fill: false,
-                    data: [{
-                        x: time, 
-                        y: speedRight
-                        }],
+                    data: [speedRight],
                     backgroundColor: [
                         'rgba(0,255,0, 1)',
 
@@ -221,10 +214,7 @@
                 }, {
                     label: 'Left wheel ref',
                     fill: false,
-                    data: [{
-                        x: time, 
-                        y: consignLeft
-                        }],
+                    data: [consignLeft],
                     backgroundColor: "blue",
                     borderColor: "blue",
                     borderCapStyle: 'square',
@@ -240,10 +230,7 @@
                 {
                     label: 'Right wheel ref',
                     fill: false,
-                    data: [{
-                        x: time, 
-                        y: consignRight
-                        }],
+                    data: [consignRight],
                     backgroundColor: "black",
                     borderColor: "black",
                     borderCapStyle: 'square',
