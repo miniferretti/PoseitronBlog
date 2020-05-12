@@ -163,9 +163,10 @@ def robotPresentation():
 @app.route('/_robotData', methods =['GET'])
 @login_required
 def robotData():
+    global timeSpeed 
+    timeSpeed = timeSpeed + 500
     resultx=random.randint(0, 10)
     resulty=random.randint(0, 10)
-    timeSpeed = timeSpeed + 500
     speedleft = random.randint(0, 10)
     speedright = random.randint(0, 10)
     return jsonify(resultx=resultx, resulty=resulty,time=timeSpeed, speedleft=speedleft, speedright= speedright)
