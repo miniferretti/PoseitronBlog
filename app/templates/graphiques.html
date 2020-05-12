@@ -62,10 +62,10 @@
 
                 });
 
-                data1 = pvols.map( (time, speedLeft) => ({ x: time, y: speedLeft }) );
-                data2 = pvols.map( (time, speedRight) => ({ x: time, y: speedRight }) );
-                data3 = pvols.map( (time, consignLeft) => ({ x: time, y: consignLeft }) );
-                data4 = pvols.map( (time, consignRight) => ({ x: time, y: consignRight }) );
+                data1 = time.map( (v, i) => ({ x: v, y: speedLeft[i] }) );
+                data2 = time.map( (v, i) => ({ x: v, y: speedRight[i] }) );
+                data3 = time.map( (v, i) => ({ x: v, y: consignLeft[i] }) );
+                data4 = time.map( (v, i) => ({ x: v, y: consignRight[i] }) );
             // c=c+2;
             //timeSpeed = timeSpeed + 0.1;
             //tab = [speedLeft, speedRight, consignLeft, consignRight];
