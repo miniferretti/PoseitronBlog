@@ -230,7 +230,7 @@ def robotData():
     speedLeft = random.randint(0, 10)
     speedRight = random.randint(0, 10)
     consignLeft = 2
-    consignRight = 2 ''''
+    consignRight = 2 '''
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
