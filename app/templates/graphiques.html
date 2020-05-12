@@ -6,11 +6,11 @@
     <body onload ="update_values();">
 
         <h1>Real time monitoring</h1>
-        <p id=resultx>?</p> 
-        <p id=resulty>?</p>
+        <!--<p id=resultx>?</p> 
+        <p id=resulty>?</p>-->
             <div>
                 <canvas id="myChart" width=".01em" height=".01em"></canvas>
-                <!--<canvas id="myChart2" width=".02em" height=".02em"></canvas>-->
+                <canvas id="myChart2" width=".02em" height=".02em"></canvas>
             </div>
 
             <script type="text/javascript">
@@ -47,6 +47,7 @@
                         myChart.data.datasets.forEach((dataset) => {
                         dataset.data.pop();
                         });*/
+
                         /* //plutot utiliser ceci pour un nombre precis de points
                         if(dataset.data.length > max){
                             dataset.data.shift();
@@ -66,8 +67,6 @@
                         myChart.update();
                     };
 
-                    //console.log(xcoord);
-                    //console.log(ycoord);
                     var ctx = document.getElementById('myChart');
                     var myChart = new Chart(ctx, {
                         type: 'scatter',
