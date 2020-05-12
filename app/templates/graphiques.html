@@ -113,11 +113,11 @@
                 myChart2.data.labels.shift();
                 }*/
                 
-            if (myChart2.data.labels.length > 100) {
+            if (myChart2.data.labels.length > 50) {
                 myChart2.data.labels.shift();
             }
             myChart2.data.datasets.forEach((dataset) => {
-                if (dataset.data.length > 100) {
+                if (dataset.data.length > 50) {
                     dataset.data.shift();
                 }
             });
