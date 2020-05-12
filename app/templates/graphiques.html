@@ -35,12 +35,12 @@
 
                 });
 
-            myChart.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });
+            
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.push({ x: xcoord, y: ycoord });
             });
+
+
             console.log(speedLeft);
             console.log(speedRight);
             console.log(consignLeft);
