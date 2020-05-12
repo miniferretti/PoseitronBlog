@@ -80,14 +80,15 @@
                         myChart2.data.labels.push(timeSpeed);
                         myChart2.data.datasets.forEach((dataset)=> {
                             dataset.data.push(speedLeft);
+                            if(data.dataset.length > 10){
+                            dataset.data.shift();
+                            myChart2.data.labels.shift();
+                            }
                         });
                         //console.log(myChart.data.datasets);
                         //console.log(myChart2.data.datasets);
                         
-                        if(myChart2.data.dataset.length > 10){
-                            dataset.data.shift();
-                            myChart2.data.labels.shift();
-                            }
+
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
                         myChart.update();
