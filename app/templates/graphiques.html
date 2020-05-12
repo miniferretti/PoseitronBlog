@@ -105,11 +105,11 @@
                 myChart2.data.dataset.data.shift();
                 myChart2.data.labels.shift();
                 }*/
-            if (myChart2.data.labels.length > 10) {
+            if (myChart2.data.labels.length > 100) {
                 myChart2.data.labels.shift();
             }
             myChart2.data.datasets.forEach((dataset) => {
-                if (dataset.data.length > 10) {
+                if (dataset.data.length > 100) {
                     dataset.data.shift();
                 }
             });
