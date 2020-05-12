@@ -77,7 +77,7 @@
                 dataset.data.shift();
             }*/
 
-
+            
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
             });
@@ -93,6 +93,10 @@
                 dataset.data.pop();
             });*/
             myChart2.clear();
+            myChart2.data.labels.pop();
+            myChart2.data.datasets.forEach((dataset) => {
+                dataset.data.pop();
+            });
             myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
                 myChart2.data.datasets[0].data.push(speedLeft);
