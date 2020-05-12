@@ -9,14 +9,25 @@ from datetime import datetime
 #import io
 #import base64
 import webbrowser
-import time 
+import time
 import random
 import json
+from struct import unpack
+from struct import pack
+import socket
 #import requests
+
+ID_type = 1  # Type
+UDP_IP = "192.168.1.111"  # IP address of the robot
+UDP_PORT = 5005  # Network Port
+# Binding of the socket to the UDP protocol
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 #timeSpeed = 0
 
 #print('Debut routes')
+
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
@@ -34,9 +45,10 @@ def index():
     next_url = url_for('index', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
-        if posts.has_prev else None   
+        if posts.has_prev else None
     return render_template('index.html', title='Home', form=form, posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,7 +65,8 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form) 
+    return render_template('login.html', title='Sign In', form=form)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -69,16 +82,19 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+
 
 @app.route('/user/<username>')
 @login_required
@@ -93,6 +109,7 @@ def user(username):
         if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -109,6 +126,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
+
 @app.route('/follow/<username>')
 @login_required
 def follow(username):
@@ -123,6 +141,7 @@ def follow(username):
     db.session.commit()
     flash('You are following {}!'.format(username))
     return redirect(url_for('user', username=username))
+
 
 @app.route('/unfollow/<username>')
 @login_required
@@ -139,6 +158,7 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
 
+
 @app.route('/explore')
 @login_required
 def explore():
@@ -150,7 +170,8 @@ def explore():
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
     return render_template("index.html", title='Explore', posts=posts.items,
-                          next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url)
+
 
 @app.route('/robotPresentation')
 @login_required
@@ -159,20 +180,40 @@ def robotPresentation():
     next_url = url_for('robotPresentation')
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
-#a modifier pour recuperer les donnees du robot
-@app.route('/_robotData', methods =['GET'])
+# a modifier pour recuperer les donnees du robot
+
+
+@app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
-    #global timeSpeed 
+    data = [float(0), float(0), float(0),
+            float(0), float(0), float(0),
+            float(0), float(0), float(0),
+            float(0), int(0), float(0),
+            float(0), float(0), float(0),
+            int(ID_type)]
+    msg = pack('ffffffffffiffffi', *data)
+    sock.sendto(msg, (UDP_IP, UDP_PORT))
+    msg = sock.recv(56)
+    data = unpack('<7d', msg)
+    Vr = data[0]
+    VrRef = data[1]
+    Vl = data[2]
+    VlRef = data[3]
+    Time = data[4]
+    X = data[5]
+    Y = data[6]
+    #global timeSpeed
     #timeSpeed = timeSpeed + 500
-    resultx=random.randint(0, 10)
-    resulty=random.randint(0, 10)
+    resultx = random.randint(0, 10)
+    resulty = random.randint(0, 10)
     speedLeft = random.randint(0, 10)
     speedRight = random.randint(0, 10)
     consignLeft = 2
     consignRight = 2
-    return jsonify(resultx=resultx, resulty=resulty, speedLeft=speedLeft, speedRight= speedRight, 
-    consignLeft = consignLeft, consignRight = consignRight)
+    return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
+                   consignLeft=VlRef, consignRight=VrRef)
+
 
 @app.route('/graphiques')
 @login_required
