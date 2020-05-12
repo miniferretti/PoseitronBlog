@@ -211,6 +211,7 @@ def robotData():
     global Time1
     global X
     global Y
+    
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
@@ -230,6 +231,12 @@ def robotData():
         Time1.append(data1[4])
         X = (data1[5])
         Y = (data1[6])
+        
+    Vr = json.dumps(Vr1)
+    Vl = json.dumps(Vl1)
+    VrRef = json.dumps(VrRef1)
+    VlRef = json.dumps(VlRef1)
+    Time = json.dumps(Time1)
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     # X = random.randint(0, 100)
@@ -238,11 +245,6 @@ def robotData():
     # Vr = random.randint(0, 100)
     # VrRef = 50
     # VlRef = 50
-    Vr = json.dumps(Vr1)
-    Vl = json.dumps(Vl1)
-    VrRef = json.dumps(VrRef1)
-    VlRef = json.dumps(VlRef1)
-    Time = json.dumps(Time1)
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
