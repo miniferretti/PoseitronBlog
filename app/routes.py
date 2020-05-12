@@ -15,6 +15,7 @@ import json
 from struct import unpack
 from struct import pack
 import socket
+import select
 #import requests
 
 ID_type = 1  # Type
@@ -22,6 +23,7 @@ UDP_IP = "192.168.1.111"  # IP address of the robot
 UDP_PORT = 5005  # Network Port
 # Binding of the socket to the UDP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.setblocking(0)
 
 #timeSpeed = 0
 
@@ -194,15 +196,17 @@ def robotData():
             int(ID_type)]
     msg = pack('ffffffffffiffffi', *data)
     sock.sendto(msg, (UDP_IP, UDP_PORT))
-    msg = sock.recv(56)
-    data = unpack('<7d', msg)
-    Vr = data[0]
-    VrRef = data[1]
-    Vl = data[2]
-    VlRef = data[3]
-    Time = data[4]
-    X = data[5]
-    Y = data[6]
+    ready = select.select([sock], [], [], 1)
+    if ready[0]:
+        msg = sock.recv(56)
+        data = unpack('<7d', msg)
+        Vr = data[0]
+        VrRef = data[1]
+        Vl = data[2]
+        VlRef = data[3]
+        Time = data[4]
+        X = data[5]
+        Y = data[6]
     #global timeSpeed
     #timeSpeed = timeSpeed + 500
     resultx = random.randint(0, 10)
