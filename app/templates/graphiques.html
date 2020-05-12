@@ -75,8 +75,11 @@
                         });
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push({x: xcoord, y: ycoord});
-                            //dataset.data.push(xcoord);
-                            //dataset.data.push(ycoord);
+                        });
+
+                        myChart2.data.labels.push(timeSpeed);
+                        myChart2.data.datasets.forEach((dataset2)=> {
+                            dataset.data.push(speedLeft);
                         });
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
@@ -90,9 +93,10 @@
                             //labels: [c],
                             datasets: [{
                                 label: 'Robot position',
-                                data: [
-                                    3
-                                ],
+                                data: [{
+                                    x: xcoord,
+                                    y: ycoord
+                                }],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
 
@@ -133,10 +137,7 @@
                             labels: [timeSpeed],
                             datasets: [{
                                 label: 'Wheels speeds',
-                                data: [{
-                                    x: xcoord,
-                                    y: ycoord
-                                }],
+                                data: [speedLeft],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
 
