@@ -222,8 +222,8 @@ def robotData():
     Vl = int(data1[2])
     VlRef = int(data1[3])
     Time = int(data1[4])
-    X = int(data1[5])
-    Y = int(data1[6])
+    X = (data1[5])
+    Y = (data1[6])
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     # X = random.randint(0, 100)
