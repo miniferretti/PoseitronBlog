@@ -78,13 +78,13 @@
 
                         console.log(speedLeft);
                         myChart2.data.labels.push(timeSpeed);
-                        myChart2.data.datasets2.forEach((dataset2)=> {
-                            dataset2.data.push(speedLeft);
+                        myChart2.data.datasets.forEach((dataset)=> {
+                            dataset.data.push(speedLeft);
                         });
-                        console.log(myChart.data.datasets.data);
-                        console.log(myChart2.data.datasets2.data);
+                        //console.log(myChart.data.datasets);
+                        //console.log(myChart2.data.datasets);
                         /*
-                        if(myChart2.data.dataset2.length > 10){
+                        if(myChart2.data.dataset.length > 10){
                             dataset2.data.shift();
                             myChart2.data.labels.shift();
                             }*/
@@ -143,7 +143,7 @@
                         type: 'line',
                         data: {
                             labels: [timeSpeed],
-                            datasets2: [{
+                            datasets: [{
                                 label: 'Wheels speeds',
                                 data: [speedLeft],
                                 backgroundColor: [
