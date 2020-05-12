@@ -85,8 +85,11 @@
                 dataset.data.push({ x: xcoord, y: ycoord });
             });
 
-            console.log(speedLeft);
+            //console.log(speedLeft);
             //myChart2.data.labels.push(timeSpeed);
+            myChart2.data.datasets.forEach((dataset) => {
+                dataset.data.pop();
+            });
             myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
                 myChart2.data.datasets[0].data.push(speedLeft);
@@ -107,7 +110,7 @@
                 myChart2.data.dataset.data.shift();
                 myChart2.data.labels.shift();
                 }*/
-              /*  
+                
             if (myChart2.data.labels.length > 100) {
                 myChart2.data.labels.shift();
             }
@@ -115,7 +118,7 @@
                 if (dataset.data.length > 100) {
                     dataset.data.shift();
                 }
-            });*/
+            });
             //console.log(myChart.data.datasets);
             //console.log(myChart2.data.datasets);
 
