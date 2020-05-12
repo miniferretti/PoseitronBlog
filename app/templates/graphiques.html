@@ -94,10 +94,10 @@
             });*/
             //myChart2.data.labels.push(timeSpeed);
             myChart2.data.datasets.forEach((dataset) => {
-                myChart2.data.datasets[0].data.push({timeSpeed, speedLeft});
-                myChart2.data.datasets[1].data.push({timeSpeed, speedRight});
-                myChart2.data.datasets[2].data.push({timeSpeed, consignLeft});
-                myChart2.data.datasets[3].data.push({timeSpeed, consignRight});
+                myChart2.data.datasets[0].data.push({ x: timeSpeed, y: speedLeft});
+                myChart2.data.datasets[1].data.push({x: timeSpeed, y: speedRight});
+                myChart2.data.datasets[2].data.push({x: timeSpeed, y: consignLeft});
+                myChart2.data.datasets[3].data.push({x: timeSpeed, y: consignRight});
                 //dataset.data.push(tab);
                 //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
                 /*
@@ -184,7 +184,9 @@
                     label: 'Speed left wheel',
                     fill: false,
                     data: [{
-                        timeSpeed, speedLeft}],
+                        x: timeSpeed, 
+                        y: speedLeft
+                        }],
                     backgroundColor: "rgba(225,0,0,0.4)",
                     borderColor: "red",
                     borderCapStyle: 'square',
@@ -198,7 +200,10 @@
                 }, {
                     label: 'Speed right wheel',
                     fill: false,
-                    data: [{timeSpeed, speedRight}],
+                    data: [{
+                        x: timeSpeed, 
+                        y: speedRight
+                        }],
                     backgroundColor: [
                         'rgba(0,255,0, 1)',
 
@@ -216,7 +221,10 @@
                 }, {
                     label: 'Left wheel ref',
                     fill: false,
-                    data: [{timeSpeed, consignLeft}],
+                    data: [{
+                        x: timeSpeed, 
+                        y: consignLeft
+                        }],
                     backgroundColor: "blue",
                     borderColor: "blue",
                     borderCapStyle: 'square',
@@ -232,7 +240,10 @@
                 {
                     label: 'Right wheel ref',
                     fill: false,
-                    data: [{timeSpeed, consignRight}],
+                    data: [{
+                        x: timeSpeed, 
+                        y: consignRight
+                        }],
                     backgroundColor: "black",
                     borderColor: "black",
                     borderCapStyle: 'square',
