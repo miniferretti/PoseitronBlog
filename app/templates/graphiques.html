@@ -17,76 +17,26 @@
 
     <script type="text/javascript">
         var intervalID = setInterval(update_values, 100);
-        //var c=0;
         let xcoord;
         let ycoord;
-        //let timeSpeed = 0;
         let speedLeft;
         let speedRight;
         let consignLeft;
         let consignRight;
         let time;
-        let data1;
-        let data2;
-        let data3;
-        let data4;
-        //let tab;
         function update_values() {
 
             $.getJSON('/_robotData',
                 function (data) {
-                    /*
-                    $('#X').text(data.resultx);
-                    $('#Y').text(data.resulty);
-                    //$('#timeSpeed').text(data.timeSpeed);
-                    $('#Vl').text(data.speedLeft);
-                    $('#Vr').text(data.speedRight);
-                    $('#time').text(data.time);
-                    $('#VlRef').text(data.consignLeft);
-                    $('#VrRef').text(data.consignRight);
-                    */
                     xcoord = data.resultx;
                     ycoord = data.resulty;
-                    //timeSpeed = data.timeSpeed;
                     speedLeft = data.speedLeft;
                     speedRight = data.speedRight;
                     consignLeft = data.consignLeft;
                     consignRight = data.consignRight;
                     time = data.time;
-                    //console.log(xcoord);
-                    //console.log(ycoord);
-                    //console.log(timeSpeed);
-                    //console.log(speedLeft);
-                    //console.log(speedRight);
-                    //console.log(consignLeft);
-                    //console.log(consignRight);
-                    //console.log(data)
 
                 });
-
-                data1 = time.map( (v, i) => ({ x: v, y: speedLeft[i] }) );
-                data2 = time.map( (v, i) => ({ x: v, y: speedRight[i] }) );
-                data3 = time.map( (v, i) => ({ x: v, y: consignLeft[i] }) );
-                data4 = time.map( (v, i) => ({ x: v, y: consignRight[i] }) );
-            // c=c+2;
-            //timeSpeed = timeSpeed + 0.1;
-            //tab = [speedLeft, speedRight, consignLeft, consignRight];
-            // la partie qui est censée transmettre les coordonnees a la chart
-
-            //console.log(c);
-            //console.log(xcoord);
-            //console.log(ycoord);
-            //myChart.data.labels.push(c);
-            /*
-            myChart.data.datasets.forEach((dataset) => {
-            dataset.data.pop();
-            });*/
-
-            /* //plutot utiliser ceci pour un nombre precis de points
-            if(dataset.data.length > max){
-                dataset.data.shift();
-            }*/
-
 
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
@@ -95,50 +45,19 @@
                 dataset.data.push({ x: xcoord, y: ycoord });
             });
 
-            //console.log(speedLeft);
-            //myChart2.data.labels.push(timeSpeed);
-
-            /*
-            myChart2.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });*/
-           // myChart2.clear();
-            //myChart2.data.labels.push(time);
-            myChart2.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });
-            myChart2.data.datasets.forEach((dataset) => {
-                myChart2.data.datasets[0].data.push(data1);
-                myChart2.data.datasets[1].data.push(data2);
-                myChart2.data.datasets[2].data.push(data3);
-                myChart2.data.datasets[3].data.push(data4);
-                //dataset.data.push(tab);
-                //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
-                /*
-                dataset.data.push(speedLeft);
-                dataset.data.push(speedRight);
-                dataset.data.push(consignLeft);
-                dataset.data.push(consignRight);*/
-            });
-            /*
-            if(myChart2.data.datasets.length> 10){
-                myChart2.data.dataset.data.shift();
-                myChart2.data.labels.shift();
-                }*/
-             /*   
-            if (myChart2.data.labels.length > 50) {
+            myChart2.data.datasets[0].data.push(speedLeft);
+            myChart2.data.datasets[1].data.push(speedRight);
+            myChart2.data.datasets[2].data.push(consignLeft);
+            myChart2.data.datasets[3].data.push(consignRight);
+            
+            if (myChart2.data.labels.length > 100) {
                 myChart2.data.labels.shift();
                 myChart2.data.datasets.forEach((dataset) => {
-                if (dataset.data.length > 50) {
+                if (dataset.data.length > 100) {
                     dataset.data.shift();
                 }
             });
-            }*/
-            //console.log(myChart.data.datasets);
-            //console.log(myChart2.data.datasets);
-
-            //myChart.data.datasets.push(xcoord);
-            //console.log(data);
+            }
             myChart.update();
             myChart2.update();
         };
@@ -147,7 +66,6 @@
         var myChart = new Chart(ctx, {
             type: 'scatter',
             data: {
-                //labels: [c],
                 datasets: [{
                     label: 'Robot position',
                     data: [{
@@ -178,7 +96,6 @@
                     }],
                     yAxes: [{
                         ticks: {
-                            //beginAtZero: true,
                             max: 10,
                             min: -10,
                             stepSize: 1
@@ -189,13 +106,13 @@
         });
         var graph2 = document.getElementById('myChart2');
         var myChart2 = new Chart(graph2, {
-            type: 'scatter',
+            type: 'line',
             data: {
-                //labels: [time],
+                labels: [time],
                 datasets: [{
                     label: 'Speed left wheel',
                     fill: false,
-                    data: [data1],
+                    data: [speedLeft],
                     backgroundColor: "rgba(225,0,0,0.4)",
                     borderColor: "red",
                     borderCapStyle: 'square',
@@ -209,7 +126,7 @@
                 }, {
                     label: 'Speed right wheel',
                     fill: false,
-                    data: [data2],
+                    data: [speedRight],
                     backgroundColor: [
                         'rgba(0,255,0, 1)',
 
@@ -227,7 +144,7 @@
                 }, {
                     label: 'Left wheel ref',
                     fill: false,
-                    data: [data3],
+                    data: [consignLeft],
                     backgroundColor: "blue",
                     borderColor: "blue",
                     borderCapStyle: 'square',
@@ -243,7 +160,7 @@
                 {
                     label: 'Right wheel ref',
                     fill: false,
-                    data: [data4],
+                    data: [consignRight],
                     backgroundColor: "black",
                     borderColor: "black",
                     borderCapStyle: 'square',
@@ -260,20 +177,8 @@
             },
             options: {
                 scales: {
-                    /*
-                    xAxes: [{
-                        type: 'linear',
-                        position: 'bottom',
-
-                        ticks: {
-                            max: 10,
-                            min: 0,
-                            stepSize: 1
-                        }
-                    }],*/
                     yAxes: [{
                         ticks: {
-                            //beginAtZero: true,
                             max: 200,
                             min: -200,
                             stepSize: 20
