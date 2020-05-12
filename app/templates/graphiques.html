@@ -90,10 +90,9 @@
                             //labels: [c],
                             datasets: [{
                                 label: 'Robot position',
-                                data: [{
-                                    x: xcoord,
-                                    y: ycoord
-                                }],
+                                data: [
+                                    3
+                                ],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
 
@@ -122,6 +121,53 @@
                                         max: 10,
                                         min: 0,
                                         stepSize: 1
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    var graph2 = document.getElementById('myChart2');
+                    var myChart2 = new Chart(graph2, {
+                        type: 'line',
+                        data: {
+                            labels: [timeSpeed],
+                            datasets: [{
+                                label: 'Wheels speeds',
+                                data: [{
+                                    x: xcoord,
+                                    y: ycoord
+                                }],
+                                backgroundColor: [
+                                    'rgba(102, 255, 153, 1)',
+
+                                ],
+                                borderColor: [
+                                    'rga(255, 0, 0, 1)',
+
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                /*
+                                xAxes: [{
+                                    type: 'linear',
+                                    position: 'bottom',
+
+                                    ticks: {
+                                        max: 10,
+                                        min: 0,
+                                        stepSize: 1
+                                    }
+                                }],*/
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        /*
+                                        max: 10,
+                                        min: 0,
+                                        stepSize: 1*/
                                     }
                                 }]
                             }
