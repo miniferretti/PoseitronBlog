@@ -42,12 +42,12 @@
 
                             //console.log(xcoord);
                             //console.log(ycoord);
-                            console.log(timeSpeed);
-                            console.log(speedLeft);
-                            console.log(speedRight);
-                            console.log(consignLeft);
-                            console.log(consignRight);
-                            //console.log(data)
+                            //console.log(timeSpeed);
+                            //console.log(speedLeft);
+                            //console.log(speedRight);
+                            //console.log(consignLeft);
+                            //console.log(consignRight);
+                            console.log(data)
 
                         });
                         
@@ -77,9 +77,9 @@
                             dataset.data.push({x: xcoord, y: ycoord});
                         });
 
-                        myChart2.data.labels.push(timeSpeed);
-                        myChart2.data.datasets.forEach((dataset2)=> {
-                            dataset2.data.push(speedLeft);
+                        myChart2.data2.labels.push(timeSpeed);
+                        myChart2.data2.datasets.forEach((dataset2)=> {
+                            dataset2.data2.push(speedLeft);
                         });
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
@@ -133,7 +133,7 @@
                     var graph2 = document.getElementById('myChart2');
                     var myChart2 = new Chart(graph2, {
                         type: 'line',
-                        data: {
+                        data2: {
                             labels: [timeSpeed],
                             datasets: [{
                                 label: 'Wheels speeds',
