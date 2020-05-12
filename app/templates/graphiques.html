@@ -39,7 +39,14 @@
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.push({ x: xcoord, y: ycoord });
             });
-
+            if (myChart.data.labels.length > 10000) {
+                myChart.data.labels.shift();
+            }
+            myChart.data.datasets.forEach((dataset) => {
+                if (dataset.data.length > 10000) {
+                    dataset.data.shift();
+                }
+            });
 
             console.log(speedLeft);
             console.log(speedRight);
