@@ -69,14 +69,18 @@
                             dataset.data.shift();
                         }*/
 
-                        myChart.data.labels.pop();
+                        //myChart.data.labels.pop();
                         myChart.data.datasets.forEach((dataset) => {
                             dataset.data.pop();
                         });
                         myChart.data.datasets.forEach((dataset )=> {
                             dataset.data.push({x: xcoord, y: ycoord});
                         });
+                        /*
+                        if(dataset2.data.length > 10){
+                            dataset2.data.shift();
 
+                        }*/
                         myChart2.data.labels.push(timeSpeed);
                         myChart2.data.datasets2.forEach((dataset2)=> {
                             dataset2.data.push(speedLeft);
@@ -165,10 +169,9 @@
                                 yAxes: [{
                                     ticks: {
                                         beginAtZero: true,
-                                        /*
                                         max: 10,
                                         min: 0,
-                                        stepSize: 1*/
+                                        stepSize: 1
                                     }
                                 }]
                             }
