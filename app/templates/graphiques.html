@@ -115,12 +115,12 @@
                 
             if (myChart2.data.labels.length > 50) {
                 myChart2.data.labels.shift();
-            }
-            myChart2.data.datasets.forEach((dataset) => {
+                myChart2.data.datasets.forEach((dataset) => {
                 if (dataset.data.length > 50) {
                     dataset.data.shift();
                 }
             });
+            }
             //console.log(myChart.data.datasets);
             //console.log(myChart2.data.datasets);
 
