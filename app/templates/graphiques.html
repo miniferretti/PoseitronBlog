@@ -18,7 +18,7 @@
                 //var c=0;
                 let xcoord ;
                 let ycoord;
-                let timeSpeed;
+                let timeSpeed = 0;
                 let speedLeft;
                 let speedRight;
                 let consignLeft;
@@ -29,17 +29,17 @@
                         function(data){
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
-                            $('#timeSpeed').text(data.timeSpeed);
+                            //$('#timeSpeed').text(data.timeSpeed);
                             $('#speedLeft').text(data.speedLeft);
                             $('#speedRight').text(data.speedRight);
                             xcoord = data.resultx;
                             ycoord = data.resulty;
-                            timeSpeed = data.timeSpeed;
+                            //timeSpeed = data.timeSpeed;
                             speedLeft = data.speedLeft;
                             speedRight = data.speedRight;
                             consignLeft = data.consignLeft;
                             consignRight = data.consignRight;
-
+                            
                             //console.log(xcoord);
                             //console.log(ycoord);
                             //console.log(timeSpeed);
@@ -52,7 +52,7 @@
                         });
                         
                        // c=c+2;
-                        
+                       timeSpeed = timeSpeed + 0.5;
                         // la partie qui est censée transmettre les coordonnees a la chart
 
                         //console.log(c);
@@ -88,6 +88,7 @@
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
                         myChart.update();
+                        myChart2.update();
                     };
 
                     var ctx = document.getElementById('myChart');
@@ -168,11 +169,10 @@
                                 }],*/
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
-                                        /*
+                                        beginAtZero: true,
                                         max: 10,
                                         min: 0,
-                                        stepSize: 1*/
+                                        stepSize: 1
                                     }
                                 }]
                             }
