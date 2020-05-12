@@ -48,7 +48,8 @@
             console.log(speedRight);
             console.log(consignLeft);
             console.log(consignRight);
-            
+
+            myChart2.data.labels.push(time);
             myChart2.data.datasets[0].data.push(speedLeft);
             myChart2.data.datasets[1].data.push(speedRight);
             myChart2.data.datasets[2].data.push(consignLeft);
