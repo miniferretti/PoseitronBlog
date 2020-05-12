@@ -31,12 +31,14 @@
 
             $.getJSON('/_robotData',
                 function (data) {
-                    $('#resultx').text(data.resultx);
-                    $('#resulty').text(data.resulty);
+                    $('#X').text(data.resultx);
+                    $('#Y').text(data.resulty);
                     //$('#timeSpeed').text(data.timeSpeed);
-                    $('#speedLeft').text(data.speedLeft);
-                    $('#speedRight').text(data.speedRight);
+                    $('#Vl').text(data.speedLeft);
+                    $('#Vr').text(data.speedRight);
                     $('#time').text(data.time);
+                    $('#VlRef').text(data.consignLeft);
+                    $('#VrRef').text(data.consignRight);
                     xcoord = data.resultx;
                     ycoord = data.resulty;
                     //timeSpeed = data.timeSpeed;
