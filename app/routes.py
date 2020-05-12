@@ -217,13 +217,13 @@ def robotData():
    # if ready[0]:
     msg2 = sock.recv(56)
     data1 = unpack('<7d', msg2)
-    Vr = float(data1[0])
-    VrRef = float(data1[1])
-    Vl = float(data1[2])
-    VlRef = float(data1[3])
-    Time = float(data1[4])
-    X = float(data1[5])
-    Y = float(data1[6])
+    Vr = int(data1[0])
+    VrRef = int(data1[1])
+    Vl = int(data1[2])
+    VlRef = int(data1[3])
+    Time = int(data1[4])
+    X = int(data1[5])
+    Y = int(data1[6])
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     # X = random.randint(0, 100)
