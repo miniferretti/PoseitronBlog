@@ -38,12 +38,8 @@
 
                 });
 
-            myChart.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });
-            myChart.data.datasets.forEach((dataset) => {
-                dataset.data.push({ x: xcoord, y: ycoord });
-            });
+            myChart.data.datasets.data.push({ x: xcoord, y: ycoord });
+
             console.log(speedLeft);
             console.log(speedRight);
             console.log(consignLeft);
@@ -54,7 +50,7 @@
             myChart2.data.datasets[1].data.push(speedRight);
             myChart2.data.datasets[2].data.push(consignLeft);
             myChart2.data.datasets[3].data.push(consignRight);
-            
+
             if (myChart2.data.labels.length > 100) {
                 myChart2.data.labels.shift();
             }
