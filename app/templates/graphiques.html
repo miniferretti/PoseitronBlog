@@ -30,19 +30,15 @@
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
                             //$('#timeSpeed').text(data.timeSpeed);
-                            /*
                             $('#speedLeft').text(data.speedLeft);
                             $('#speedRight').text(data.speedRight);
-                            */
                             xcoord = data.resultx;
                             ycoord = data.resulty;
                             //timeSpeed = data.timeSpeed;
-                            /*
                             speedLeft = data.speedLeft;
                             speedRight = data.speedRight;
                             consignLeft = data.consignLeft;
                             consignRight = data.consignRight;
-                            */
                             //console.log(xcoord);
                             //console.log(ycoord);
                             //console.log(timeSpeed);
@@ -53,27 +49,7 @@
                             console.log(data)
 
                         });
-                        $.getJSON('/_robotData',
-                        function(data2){
-                            $('#speedLeft').text(data2.speedLeft);
-                            $('#speedRight').text(data2.speedRight);
-                            $('#consignLeft').text(data2.consignLeft);
-                            $('#consignRight').text(data2.consignRight);
-                            speedLeft = data2.speedLeft;
-                            speedRight = data2.speedRight;
-                            consignLeft = data2.consignLeft;
-                            consignRight = data2.consignRight;
-                            
-                            //console.log(xcoord);
-                            //console.log(ycoord);
-                            //console.log(timeSpeed);
-                            //console.log(speedLeft);
-                            //console.log(speedRight);
-                            //console.log(consignLeft);
-                            //console.log(consignRight);
-                            console.log(data2)
-
-                        });
+                        
                        // c=c+2;
                        timeSpeed = timeSpeed + 0.5;
                         // la partie qui est censée transmettre les coordonnees a la chart
@@ -100,14 +76,15 @@
                             dataset.data.push({x: xcoord, y: ycoord});
                         });
 
-                        if(dataset2.data2.length > 10){
-                            dataset2.data2.shift();
-                            myChart2.data2.labels.shift();
-                        }
-                        myChart2.data2.labels.push(timeSpeed);
-                        myChart2.data2.datasets2.forEach((dataset2)=> {
-                            dataset2.data2.push(speedLeft);
+
+                        myChart2.data.labels.push(timeSpeed);
+                        myChart2.data.datasets2.forEach((dataset2)=> {
+                            dataset.data.push(speedLeft);
                         });
+                        if(dataset2.data.length > 10){
+                            dataset2.data.shift();
+                            myChart2.data.labels.shift();
+                            }
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
                         myChart.update();
@@ -161,7 +138,7 @@
                     var graph2 = document.getElementById('myChart2');
                     var myChart2 = new Chart(graph2, {
                         type: 'line',
-                        data2: {
+                        data: {
                             labels: [timeSpeed],
                             datasets2: [{
                                 label: 'Wheels speeds',
