@@ -192,11 +192,11 @@ class L(list):
             del self[0]
 
 
-Vr = L()
-VrRef = L()
-Vl = L()
-VlRef = L()
-Time = L()
+Vr1 = L()
+VrRef1 = L()
+Vl1 = L()
+VlRef1 = L()
+Time1 = L()
 X = 0
 Y = 0
 
@@ -216,11 +216,11 @@ def robotData():
     if ready[0]:
         msg2 = sock.recv(56)
         data1 = unpack('<7d', msg2)
-        Vr.append(data1[0])
-        VrRef.append(data1[1])
-        Vl.append(data1[2])
-        VlRef.append(data1[3])
-        Time.append(data1[4])
+        Vr1.append(data1[0])
+        VrRef1.append(data1[1])
+        Vl1.append(data1[2])
+        VlRef1.append(data1[3])
+        Time1.append(data1[4])
         X = (data1[5])
         Y = (data1[6])
     # global timeSpeed
@@ -231,8 +231,13 @@ def robotData():
     # Vr = random.randint(0, 100)
     # VrRef = 50
     # VlRef = 50
-    return jsonify(resultx=X, resulty=Y, speedLeft=json.dumps(Vl), speedRight=json.dumps(Vr),
-                   consignLeft=json.dumps(VlRef), consignRight=json.dumps(VrRef), time=json.dumps(Time))
+    Vr = json.dumps(Vr1)
+    Vl = json.dumps(Vl1)
+    VrRef = json.dumps(VrRef1)
+    VlRef = json.dumps(VlRef1)
+    Time = json.dumps(Time1)
+    return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
+                   consignLeft=VlRef, consignRight=VrRef, time=Time)
 
 
 @app.route('/graphiques')
