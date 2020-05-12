@@ -23,7 +23,7 @@ UDP_IP = "192.168.1.111"  # IP address of the robot
 UDP_PORT = 5005  # Network Port
 # Binding of the socket to the UDP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.setblocking(1)
+sock.setblocking(0)
 
 # timeSpeed = 0
 
@@ -197,14 +197,13 @@ Y = 0
 @app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
-    global Vr
-    global VrRef
-    global Vl
-    global VlRef
-    global Time
-    global X
-    global Y
-
+    Vr = 0
+    VrRef = 0
+    Vl = 0
+    VlRef = 0
+    Time = 0
+    X = 0
+    Y = 0
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
@@ -213,17 +212,17 @@ def robotData():
             int(ID_type)]
     msg = pack('ffffffffffiffffi', *data)
     sock.sendto(msg, (UDP_IP, UDP_PORT))
-    #ready = select.select([sock], [], [], 1)
-   # if ready[0]:
-    msg2 = sock.recv(56)
-    data1 = unpack('<7d', msg2)
-    Vr = (data1[0])
-    VrRef = (data1[1])
-    Vl = (data1[2])
-    VlRef = (data1[3])
-    Time = (data1[4])
-    X = (data1[5])
-    Y = (data1[6])
+    ready = select.select([sock], [], [], 0.1)
+    if ready[0]:
+        msg2 = sock.recv(56)
+        data1 = unpack('<7d', msg2)
+        Vr = (data1[0])
+        VrRef = (data1[1])
+        Vl = (data1[2])
+        VlRef = (data1[3])
+        Time = (data1[4])
+        X = (data1[5])
+        Y = (data1[6])
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     # X = random.randint(0, 100)
@@ -233,7 +232,7 @@ def robotData():
     # VrRef = 50
     # VlRef = 50
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
-                   consignLeft=VlRef, consignRight=VrRef)#, time=Time)
+                   consignLeft=VlRef, consignRight=VrRef)  # , time=Time)
 
 
 @app.route('/graphiques')
