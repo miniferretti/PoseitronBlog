@@ -16,11 +16,11 @@
     </div>
 
     <script type="text/javascript">
-        var intervalID = setInterval(update_values, 100);
+        var intervalID = setInterval(update_values, 1000);
         //var c=0;
         let xcoord;
         let ycoord;
-        //let timeSpeed = 0;
+        let timeSpeed = 0;
         let speedLeft;
         let speedRight;
         let consignLeft;
@@ -59,7 +59,7 @@
                 });
 
             // c=c+2;
-            //timeSpeed = timeSpeed + 0.5;
+            timeSpeed = timeSpeed + 1;
             //tab = [speedLeft, speedRight, consignLeft, consignRight];
             // la partie qui est censée transmettre les coordonnees a la chart
 
@@ -87,9 +87,11 @@
 
             //console.log(speedLeft);
             //myChart2.data.labels.push(timeSpeed);
+
+            /*
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
-            });
+            });*/
             myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
                 myChart2.data.datasets[0].data.push(speedLeft);
