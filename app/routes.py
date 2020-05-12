@@ -205,7 +205,7 @@ def robotData():
             int(ID_type)]
     msg = pack('ffffffffffiffffi', *data)
     sock.sendto(msg, (UDP_IP, UDP_PORT))
-    ready = select.select([sock], [], [], 0.1)
+    ready = select.select([sock], [], [], 0.05)
     if ready[0]:
         msg = sock.recv(56)
         data = unpack('<7d', msg)
