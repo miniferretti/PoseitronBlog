@@ -24,7 +24,7 @@
                 let speedRight;
                 let consignLeft;
                 let consignRight;
-                let tab;
+                //let tab;
                     function update_values(){
 
                         $.getJSON('/_robotData',
@@ -54,7 +54,7 @@
                         
                        // c=c+2;
                        timeSpeed = timeSpeed + 0.5;
-                       tab = [speedLeft, speedRight, consignLeft, consignRight];
+                       //tab = [speedLeft, speedRight, consignLeft, consignRight];
                         // la partie qui est censée transmettre les coordonnees a la chart
 
                         //console.log(c);
@@ -82,7 +82,11 @@
                         console.log(speedLeft);
                         myChart2.data.labels.push(timeSpeed);
                         myChart2.data.datasets.forEach((dataset)=> {
-                            dataset.data.push(tab);
+                            myChart2.data.datasets[0].data.push(speedLeft);
+                            myChart2.data.datasets[1].data.push(speedRight);
+                            myChart2.data.datasets[2].data.push(consignLeft);
+                            myChart2.data.datasets[3].data.push(consignRight);
+                            //dataset.data.push(tab);
                             //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
                             /*
                             dataset.data.push(speedLeft);
@@ -166,7 +170,7 @@
                             datasets: [{
                                 label: 'Speed left wheel',
                                 fill: false,
-                                data: [tab[0]],
+                                data: [speedLeft],
                                 backgroundColor:"rgba(225,0,0,0.4)",
                                 borderColor: "red",
                                 borderCapStyle: 'square',
@@ -179,7 +183,7 @@
                                 borderWidth: 1
                             },{label: 'Speed right wheel',
                                 fill: false,
-                                data: [tab[1]],
+                                data: [speedRight],
                                 backgroundColor: [
                                     'rgba(0,255,0, 1)',
 
@@ -196,7 +200,7 @@
 
                             },{label: 'Left wheel ref',
                                 fill: false,
-                                data: [tab[2]],
+                                data: [consignLeft],
                                 backgroundColor: "blue",
                                 borderColor: "blue",
                                 borderCapStyle: 'square',
@@ -211,7 +215,7 @@
                             },
                             {label: 'Right wheel ref',
                                 fill: false,
-                                data: [tab[3]],
+                                data: [consignRight],
                                 backgroundColor: "black",
                                 borderColor: "black",
                                 borderCapStyle: 'square',
