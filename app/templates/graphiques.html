@@ -26,6 +26,10 @@
         let consignLeft;
         let consignRight;
         let time;
+        let data1;
+        let data2;
+        let data3;
+        let data4;
         //let tab;
         function update_values() {
 
@@ -58,6 +62,10 @@
 
                 });
 
+                data1 = pvols.map( (time,speedLeft) => ({ x: time, y: speedLeft }) );
+                data2 = pvols.map( (time,speedRight) => ({ x: time, y: speedRight }) );
+                data3 = pvols.map( (time,speedRight) => ({ x: time, y: consignLeft }) );
+                data4 = pvols.map( (time,speedRight) => ({ x: time, y: consignRight }) );
             // c=c+2;
             //timeSpeed = timeSpeed + 0.1;
             //tab = [speedLeft, speedRight, consignLeft, consignRight];
@@ -92,13 +100,16 @@
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
             });*/
-            myChart2.clear();
-            myChart2.data.labels.push(time);
+           // myChart2.clear();
+            //myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
-                myChart2.data.datasets[0].data.push(speedLeft);
-                myChart2.data.datasets[1].data.push(speedRight);
-                myChart2.data.datasets[2].data.push(consignLeft);
-                myChart2.data.datasets[3].data.push(consignRight);
+                dataset.data.pop();
+            });
+            myChart2.data.datasets.forEach((dataset) => {
+                myChart2.data.datasets[0].data.push(data1);
+                myChart2.data.datasets[1].data.push(data2);
+                myChart2.data.datasets[2].data.push(data3);
+                myChart2.data.datasets[3].data.push(data4);
                 //dataset.data.push(tab);
                 //dataset.data.push({speedLeft,speedRight,consignLeft,consignRight});
                 /*
@@ -176,13 +187,13 @@
         });
         var graph2 = document.getElementById('myChart2');
         var myChart2 = new Chart(graph2, {
-            type: 'line',
+            type: 'scatter',
             data: {
-                labels: [time],
+                //labels: [time],
                 datasets: [{
                     label: 'Speed left wheel',
                     fill: false,
-                    data: [speedLeft],
+                    data: [data1],
                     backgroundColor: "rgba(225,0,0,0.4)",
                     borderColor: "red",
                     borderCapStyle: 'square',
@@ -196,7 +207,7 @@
                 }, {
                     label: 'Speed right wheel',
                     fill: false,
-                    data: [speedRight],
+                    data: [data2],
                     backgroundColor: [
                         'rgba(0,255,0, 1)',
 
@@ -214,7 +225,7 @@
                 }, {
                     label: 'Left wheel ref',
                     fill: false,
-                    data: [consignLeft],
+                    data: [data3],
                     backgroundColor: "blue",
                     borderColor: "blue",
                     borderCapStyle: 'square',
@@ -230,7 +241,7 @@
                 {
                     label: 'Right wheel ref',
                     fill: false,
-                    data: [consignRight],
+                    data: [data4],
                     backgroundColor: "black",
                     borderColor: "black",
                     borderCapStyle: 'square',
