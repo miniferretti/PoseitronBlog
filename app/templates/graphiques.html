@@ -77,9 +77,9 @@
                             dataset.data.push({x: xcoord, y: ycoord});
                         });
 
-                        myChart2.data2.labels.push(timeSpeed);
-                        myChart2.data2.datasets.forEach((dataset2)=> {
-                            dataset2.data2.push(speedLeft);
+                        myChart2.data.labels.push(timeSpeed);
+                        myChart2.data.datasets2.forEach((dataset2)=> {
+                            dataset2.data.push(speedLeft);
                         });
                         //myChart.data.datasets.push(xcoord);
                         //console.log(data);
@@ -133,9 +133,9 @@
                     var graph2 = document.getElementById('myChart2');
                     var myChart2 = new Chart(graph2, {
                         type: 'line',
-                        data2: {
+                        data: {
                             labels: [timeSpeed],
-                            datasets: [{
+                            datasets2: [{
                                 label: 'Wheels speeds',
                                 data: [speedLeft],
                                 backgroundColor: [
