@@ -8,7 +8,7 @@
         <h1>Real time monitoring</h1>
         <!--<p id=resultx>?</p> 
         <p id=resulty>?</p>-->
-            <button onclick="stopTextColor();">Stop</button>
+            <!--<button onclick="stopTextColor();">Stop</button>-->
             <div>
                 <canvas id="myChart" width=".01em" height=".01em"></canvas>
                 <canvas id="myChart2" width=".02em" height=".02em"></canvas>
@@ -84,8 +84,8 @@
                             
                         });
                         if(myChart2.data.datasets.length> 10){
-                            myChart2.data.dataset.data.pop();
-                            myChart2.data.labels.pop();
+                            myChart2.data.dataset.data.shift();
+                            myChart2.data.labels.shift();
                             }
                         //console.log(myChart.data.datasets);
                         //console.log(myChart2.data.datasets);
@@ -148,14 +148,15 @@
                             labels: [timeSpeed],
                             datasets: [{
                                 label: 'Wheels speeds',
-                                data: [speedLeft],
+                                data: [speedLeft, 
+                                speedRight],
                                 backgroundColor: [
                                     'rgba(102, 255, 153, 1)',
 
                                 ],
                                 borderColor: [
                                     'rga(255, 0, 0, 1)',
-
+                                    'rga(0, 255, 0, 2)'
                                 ],
                                 borderWidth: 1
                             }]
