@@ -147,7 +147,7 @@
                         data: {
                             labels: [timeSpeed],
                             datasets: [{
-                                label: 'Wheels speeds',
+                                label: 'Speed left wheel',
                                 fill: false,
                                 data: [speedLeft, 
                                 speedRight],
@@ -155,11 +155,32 @@
                                     'rgba(102, 255, 153, 1)',
 
                                 ],
-                                borderColor: [
-                                    'rga(255, 0, 0, 1)',
-                                    'rga(0, 255, 0, 2)'
-                                ],
+                                borderColor: "red",
+                                borderCapStyle: 'square',
+                                pointBorderColor: "black",
+                                pointBackgroundColor: "red",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 8,
+                                pointRadius: 4,
+                                pointHitRadius: 10,
                                 borderWidth: 1
+                            },{label: 'Speed right wheel',
+                                fill: false,
+                                data: [speedRight],
+                                backgroundColor: [
+                                    'rgba(102, 255, 153, 1)',
+
+                                ],
+                                borderColor: "green",
+                                borderCapStyle: 'square',
+                                pointBorderColor: "black",
+                                pointBackgroundColor: "green",
+                                pointBorderWidth: 1,
+                                pointHoverRadius: 8,
+                                pointRadius: 4,
+                                pointHitRadius: 10,
+                                borderWidth: 1
+
                             }]
                         },
                         options: {
