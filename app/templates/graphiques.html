@@ -62,10 +62,10 @@
 
                 });
 
-                data1 = pvols.map( (time,speedLeft) => ({ x: time, y: speedLeft }) );
-                data2 = pvols.map( (time,speedRight) => ({ x: time, y: speedRight }) );
-                data3 = pvols.map( (time,speedRight) => ({ x: time, y: consignLeft }) );
-                data4 = pvols.map( (time,speedRight) => ({ x: time, y: consignRight }) );
+            data1 = pvols.map((time, speedLeft) => ({ x: time, y: speedLeft }));
+            data2 = pvols.map((time, speedRight) => ({ x: time, y: speedRight }));
+            data3 = pvols.map((time, speedRight) => ({ x: time, y: consignLeft }));
+            data4 = pvols.map((time, speedRight) => ({ x: time, y: consignRight }));
             // c=c+2;
             //timeSpeed = timeSpeed + 0.1;
             //tab = [speedLeft, speedRight, consignLeft, consignRight];
@@ -100,7 +100,7 @@
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
             });*/
-           // myChart2.clear();
+            // myChart2.clear();
             //myChart2.data.labels.push(time);
             myChart2.data.datasets.forEach((dataset) => {
                 dataset.data.pop();
@@ -123,15 +123,15 @@
                 myChart2.data.dataset.data.shift();
                 myChart2.data.labels.shift();
                 }*/
-             /*   
-            if (myChart2.data.labels.length > 50) {
-                myChart2.data.labels.shift();
-                myChart2.data.datasets.forEach((dataset) => {
-                if (dataset.data.length > 50) {
-                    dataset.data.shift();
-                }
-            });
-            }*/
+            /*   
+           if (myChart2.data.labels.length > 50) {
+               myChart2.data.labels.shift();
+               myChart2.data.datasets.forEach((dataset) => {
+               if (dataset.data.length > 50) {
+                   dataset.data.shift();
+               }
+           });
+           }*/
             //console.log(myChart.data.datasets);
             //console.log(myChart2.data.datasets);
 
