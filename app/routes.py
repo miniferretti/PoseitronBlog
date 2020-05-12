@@ -210,19 +210,19 @@ def robotData():
         msg = sock.recv(56)
         data = unpack('<7d', msg)
         global Vr
-        Vr = data[0]
+        Vr = float(data[0])
         global VrRef
-        VrRef = data[1]
+        VrRef = float(data[1])
         global Vl
-        Vl = data[2]
+        Vl = float(data[2])
         global VlRef
-        VlRef = data[3]
+        VlRef = float(data[3])
         global Time
-        Time = data[4]
+        Time = float(data[4])
         global X
-        X = data[5]
+        X = float(data[5])
         global Y
-        Y = data[6]
+        Y = float(data[6])
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
     #resultx = random.randint(0, 10)
