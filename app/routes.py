@@ -167,11 +167,11 @@ def robotData():
     timeSpeed = timeSpeed + 500
     resultx=random.randint(0, 10)
     resulty=random.randint(0, 10)
-    speedleft = random.randint(0, 10)
-    speedright = random.randint(0, 10)
+    speedLeft = random.randint(0, 10)
+    speedRight = random.randint(0, 10)
     consignLeft = 2
     consignRight = 2
-    return jsonify(resultx=resultx, resulty=resulty,timeSpeed=timeSpeed, speedleft=speedleft, speedright= speedright, 
+    return jsonify(resultx=resultx, resulty=resulty,timeSpeed=timeSpeed, speedLeft=speedLeft, speedRight= speedRight, 
     consignLeft = consignLeft, consignRight = consignRight)
 
 @app.route('/graphiques')
