@@ -226,12 +226,12 @@ def robotData():
         Y = data[6]
     # global timeSpeed
     # timeSpeed = timeSpeed + 500
-   # X = random.randint(0, 100)
-   # Y = random.randint(0, 100)
-   # Vl = random.randint(0, 100)
-   # Vr = random.randint(0, 100)
-   # VrRef = 50
-   # VlRef = 50
+    # X = random.randint(0, 100)
+    # Y = random.randint(0, 100)
+    # Vl = random.randint(0, 100)
+    # Vr = random.randint(0, 100)
+    # VrRef = 50
+    # VlRef = 50
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
