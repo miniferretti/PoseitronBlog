@@ -46,7 +46,7 @@
                             //console.log(speedRight);
                             //console.log(consignLeft);
                             //console.log(consignRight);
-                            console.log(data)
+                            //console.log(data)
 
                         });
                         
@@ -76,11 +76,12 @@
                             dataset.data.push({x: xcoord, y: ycoord});
                         });
 
-
+                        console.log(speedLeft);
                         myChart2.data.labels.push(timeSpeed);
                         myChart2.data.datasets2.forEach((dataset2)=> {
                             dataset2.data.push(speedLeft);
                         });
+                        console.log(myChart2.data.datasets2.data);
                         /*
                         if(myChart2.data.dataset2.length > 10){
                             dataset2.data.shift();
