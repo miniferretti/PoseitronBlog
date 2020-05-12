@@ -18,7 +18,11 @@
                 //var c=0;
                 let xcoord ;
                 let ycoord;
-
+                let timeSpeed;
+                let speedLeft;
+                let speedRight;
+                let consignLeft;
+                let consignRight;
                     function update_values(){
 
                         $.getJSON('/_robotData',
@@ -26,15 +30,23 @@
                             $('#resultx').text(data.resultx);
                             $('#resulty').text(data.resulty);
                             $('#timeSpeed').text(data.timeSpeed);
-                            $('#speedLeft').text(data.speedleft);
-                            $('#speedright').text(data.speedright);
+                            $('#speedLeft').text(data.speedLeft);
+                            $('#speedright').text(data.speedRight);
                             xcoord = data.resultx;
                             ycoord = data.resulty;
+                            timeSpeed = data.timeSpeed;
+                            speedLeft = data.speedLeft;
+                            speedRight = data.speedRight;
+                            consignLeft = data.consignLeft;
+                            consignRight = data.consignRight;
+
                             //console.log(xcoord);
                             //console.log(ycoord);
                             console.log(timeSpeed);
                             console.log(speedleft);
                             console.log(speedright);
+                            console.log(consignLeft);
+                            console.log(consignRight);
                             //console.log(data)
 
                         });
