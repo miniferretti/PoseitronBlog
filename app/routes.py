@@ -14,7 +14,7 @@ import random
 import json
 #import requests
 
-timeSpeed = 0
+#timeSpeed = 0
 
 #print('Debut routes')
 @app.route('/', methods=['GET', 'POST'])
@@ -163,15 +163,15 @@ def robotPresentation():
 @app.route('/_robotData', methods =['GET'])
 @login_required
 def robotData():
-    global timeSpeed 
-    timeSpeed = timeSpeed + 500
+    #global timeSpeed 
+    #timeSpeed = timeSpeed + 500
     resultx=random.randint(0, 10)
     resulty=random.randint(0, 10)
     speedLeft = random.randint(0, 10)
     speedRight = random.randint(0, 10)
     consignLeft = 2
     consignRight = 2
-    return jsonify(resultx=resultx, resulty=resulty,timeSpeed=timeSpeed, speedLeft=speedLeft, speedRight= speedRight, 
+    return jsonify(resultx=resultx, resulty=resulty, speedLeft=speedLeft, speedRight= speedRight, 
     consignLeft = consignLeft, consignRight = consignRight)
 
 @app.route('/graphiques')
