@@ -21,7 +21,8 @@
         let consignLeft;
         let consignRight;
         let time;
-        
+        myChart.canvas.parentNode.style.height = '128px';
+        myChart.canvas.parentNode.style.width = '128px';
         function update_values() {
 
             $.getJSON('/_robotData',
@@ -36,7 +37,7 @@
 
                 });
 
-            
+
             myChart.data.datasets.forEach((dataset) => {
                 dataset.data.push({ x: xcoord, y: ycoord });
             });
@@ -54,7 +55,7 @@
             myChart2.data.datasets[1].data.push(speedRight);
             myChart2.data.datasets[2].data.push(consignLeft);
             myChart2.data.datasets[3].data.push(consignRight);
-            
+
             if (myChart2.data.labels.length > 100) {
                 myChart2.data.labels.shift();
             }
