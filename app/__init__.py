@@ -45,5 +45,4 @@ if not app.debug:
     app.logger.info('PoseitronBlog startup')
 
 #print('Fin Init py')
-
 app.run(host='0.0.0.0', port=2000)
