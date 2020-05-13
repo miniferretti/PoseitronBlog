@@ -45,4 +45,9 @@ if not app.debug:
     app.logger.info('PoseitronBlog startup')
 
 #print('Fin Init py')
+<<<<<<< HEAD
 app.run(host='0.0.0.0', port=2000)
+=======
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=2000)
+>>>>>>> parent of 8b4075a... yey
