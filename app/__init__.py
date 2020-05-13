@@ -43,5 +43,5 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('PoseitronBlog startup')
-    app.run(host='0.0.0.0', port=5000)
+    
 #print('Fin Init py')
