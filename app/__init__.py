@@ -1,4 +1,3 @@
-from app import routes, models, errors
 from flask import Flask
 from app.config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -16,6 +15,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
+from app import routes, models, errors
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -45,4 +45,4 @@ if not app.debug:
     app.logger.info('PoseitronBlog startup')
 
 #print('Fin Init py')
-#app.run(host='0.0.0.0', port=2000)
+app.run(host='0.0.0.0', port=2000)
