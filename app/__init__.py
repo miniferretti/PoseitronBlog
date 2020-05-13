@@ -14,7 +14,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
-app.run(host='0.0.0.0', port=2000)
 
 from app import routes, models, errors
 
