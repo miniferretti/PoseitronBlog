@@ -87,4 +87,4 @@ class UserModelCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-    app.run(host='0.0.0.0', port=2000)
+    
