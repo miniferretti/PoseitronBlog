@@ -5,9 +5,6 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-# import matplotlib.pyplot as plt
-# import io
-# import base64
 import webbrowser
 import time
 import random
@@ -16,7 +13,6 @@ from struct import unpack
 from struct import pack
 import socket
 import select
-# import requests
 
 ID_type = 1  # Type
 UDP_IP = "192.168.1.111"  # IP address of the robot
@@ -24,11 +20,6 @@ UDP_PORT = 5005  # Network Port
 # Binding of the socket to the UDP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setblocking(0)
-
-# timeSpeed = 0
-
-# print('Debut routes')
-
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -182,15 +173,11 @@ def robotPresentation():
     next_url = url_for('robotPresentation')
     return render_template("robotPresentation.html", title='Robot\' presentation')
 
-# a modifier pour recuperer les donnees du robot
-
-
 class L(list):
     def append(self, item):
         list.append(self, item)
         if len(self) > 100:
             del self[0]
-
 
 Vr = 0
 VrRef = 0
@@ -199,7 +186,6 @@ VlRef = 0
 Time = 0
 X = 0
 Y = 0
-
 
 @app.route('/_robotData', methods=['GET'])
 @login_required
@@ -212,6 +198,7 @@ def robotData():
     global X
     global Y
 
+    '''
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
@@ -231,15 +218,16 @@ def robotData():
         Time = data1[4]
         X = data1[5]
         Y = data1[6]
+    '''
 
     # global timeSpeed
-    # timeSpeed = timeSpeed + 500
-    # X = random.randint(0, 100)
-    # Y = random.randint(0, 100)
-    # Vl = random.randint(0, 100)
-    # Vr = random.randint(0, 100)
-    # VrRef = 50
-    # VlRef = 50
+    Time = Time + 0.1
+    X = random.randint(0, 300)
+    Y = random.randint(0, 300)
+    Vl = random.randint(0, 300)
+    Vr = random.randint(0, 300)
+    VrRef = 100
+    VlRef = 100
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
