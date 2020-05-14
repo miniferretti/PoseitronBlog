@@ -222,8 +222,8 @@ def robotData():
 
     # global timeSpeed
     Time = Time + 0.1
-    X = random.randint(0, 300)
-    Y = random.randint(0, 300)
+    X = 0
+    Y = 0
     Vl = random.randint(0, 300)
     Vr = random.randint(0, 300)
     VrRef = 100
