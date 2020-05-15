@@ -23,6 +23,9 @@
 
 {% block content %}
     <div class="container">
+        .container{
+            margin-right: 15px ;
+        }
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
