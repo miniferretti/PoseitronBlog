@@ -3,9 +3,9 @@
 {% block app_content %}
 <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+<div style="text-align: left;"></div>
 <body onload="update_values();">
-
+    
     <h1>Real time monitoring</h1>
     <div class="chart-container" style="position: relative; height:40vh; width:40vw">
         <canvas id="myChart" width="0.2em" height="0.2em"></canvas>
@@ -192,5 +192,5 @@
         });
     </script>
 </body>
-
+</div>
 {% endblock %}
