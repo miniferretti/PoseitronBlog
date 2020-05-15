@@ -190,15 +190,6 @@ Y = 0
 @app.route('/_robotData', methods=['GET'])
 @login_required
 def robotData():
-    global Vr
-    global VrRef
-    global Vl
-    global VlRef
-    global Time
-    global X
-    global Y
-
-    '''
     data = [float(0), float(0), float(0),
             float(0), float(0), float(0),
             float(0), float(0), float(0),
@@ -218,16 +209,7 @@ def robotData():
         Time = data1[4]
         X = data1[5]
         Y = data1[6]
-    '''
-
-    # global timeSpeed
-    Time = Time + 0.1
-    X = 0
-    Y = 0
-    Vl = random.randint(0, 300)
-    Vr = random.randint(0, 300)
-    VrRef = 100
-    VlRef = 100
+ 
     return jsonify(resultx=X, resulty=Y, speedLeft=Vl, speedRight=Vr,
                    consignLeft=VlRef, consignRight=VrRef, time=Time)
 
