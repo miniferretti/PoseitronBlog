@@ -1,3 +1,3 @@
 #!/bin/bash 
 
-flask run --cert=adhoc
+flask run --host=0.0.0.0 --cert=adhoc
